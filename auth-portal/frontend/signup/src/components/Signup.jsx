@@ -66,7 +66,7 @@ const Signup = () => {
           type="password"
           placeholder="Password"
           name="password"
-          onChange={formdataHandle}
+          onChange={formdataHandle }
           required
         />
         <button type="submit">Sign Up</button>
