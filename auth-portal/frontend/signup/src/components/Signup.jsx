@@ -91,9 +91,25 @@ const Signup = () => {
 
   const navigate=useNavigate();
 
-  const HandleSubmit(){
+  const HandleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+const response = await fetch("http://localhost:3000/signup", {
+       method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
+     const data = await response.json();
+
+      
+    } catch (error) {
+      
+    }
+    
   }
+
+
 
   return (
     <form onSubmit={HandleSubmit}>
