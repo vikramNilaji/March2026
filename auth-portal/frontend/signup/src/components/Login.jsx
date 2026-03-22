@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"
+import "./Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -9,9 +9,11 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      // Inside handleLogin
       const response = await fetch(
-        "https://march2026-production.up.railway.app/",
+        "https://march2026-production.up.railway.app/signin",
         {
+          // Added /signin
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -21,12 +23,11 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // SAVE TOKEN TO LOCAL STORAGE
         localStorage.setItem("token", data.token);
+        // Important: Save user data so the dashboard can display your name
+        localStorage.setItem("user", JSON.stringify(data.user));
         alert("Logged in successfully!");
         navigate("/dashboard");
-      } else {
-        alert(data.error || "Login failed");
       }
     } catch (err) {
       console.error("Login Error:", err);
