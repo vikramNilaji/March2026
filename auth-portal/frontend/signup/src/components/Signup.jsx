@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css"
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/signup", {
+      const response = await fetch("https://march2026-production.up.railway.app", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -35,37 +36,34 @@ const Signup = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "50px auto" }}>
-      <h2>Create Account</h2>
+    <div className="signup-container">
+  <h2>Create Account</h2>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-      >
-        <input
-          type="text"
-          placeholder="Full Name"
-          name="name"
-          onChange={formdataHandle}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          onChange={formdataHandle}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={formdataHandle}
-          required
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+  <form onSubmit={handleSubmit} className="signup-form">
+    <input
+      type="text"
+      placeholder="Full Name"
+      name="name"
+      onChange={formdataHandle}
+      required
+    />
+    <input
+      type="email"
+      placeholder="Email"
+      name="email"
+      onChange={formdataHandle}
+      required
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      name="password"
+      onChange={formdataHandle}
+      required
+    />
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
   );
 };
 

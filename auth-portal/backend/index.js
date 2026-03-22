@@ -9,9 +9,12 @@ import jwt from "jsonwebtoken";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: "*", // This allows any website to talk to your backend
+  methods: ["GET", "POST", "PUT", "DELETE"]
+}));
 app.use(express.json());
 
 connectDB();
