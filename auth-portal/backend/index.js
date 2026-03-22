@@ -20,6 +20,10 @@ app.use(cors({
 app.use(express.json());
 
 connectDB();
+// Add this right before app.listen to verify the URL works in a browser
+app.get("/", (req, res) => {
+  res.send("Backend is live and healthy!");
+});
 
 app.post("/signup", async (req, res) => {
   try {
@@ -81,6 +85,7 @@ app.post("/signin", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Server running on port ${port}`);
 });
+
