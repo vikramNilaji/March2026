@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://march2026-production.up.railway.app",
+        "https://march2026-production.up.railway.app/",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -60,7 +60,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   // REPLACE THIS with your actual Railway URL
-  const API_URL = "https://march2026-production.up.railway.app";
+  const API_URL = "https://march2026-production.up.railway.app/";
 
   useEffect(() => {
     const fetchUserData = async () => {
