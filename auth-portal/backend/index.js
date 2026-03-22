@@ -11,9 +11,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors ({
-  origin: "*", // This allows any website to talk to your backend
-  methods: ["GET", "POST", "PUT", "DELETE"]
+app.use(cors({
+  origin: 'https://march2026-theta.vercel.app', // Your specific frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use(express.json());
 
