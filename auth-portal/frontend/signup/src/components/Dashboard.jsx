@@ -50,7 +50,7 @@
 
 // export default Dashboard;
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react' ;
 import { useNavigate } from 'react-router-dom';
 import "./Dashboard.css"; // Ensure you rename Login.css to Dashboard.css for clarity
 
