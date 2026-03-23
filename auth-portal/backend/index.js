@@ -11,12 +11,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors({
-  origin: 'https://march2026-theta.vercel.app', // Your specific frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
+app.use(
+  cors({
+    origin: "https://march2026-theta.vercel.app", // Your specific frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
 app.use(express.json());
 
 connectDB();
@@ -87,5 +89,4 @@ app.post("/signin", async (req, res) => {
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on port ${port}`);
-  
 });
