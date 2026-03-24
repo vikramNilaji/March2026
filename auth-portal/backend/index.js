@@ -41,6 +41,8 @@ app.post("/signup", async (req, res) => {
       email,
       password: hashPassword,
     });
+    console.log("original password",password)
+    console.log("Hashed Password",hashPassword)
 
     await user.save();
 
