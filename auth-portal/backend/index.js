@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import User from "./models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import Expense from "./models/Expense.js"
+import 
 
 dotenv.config();
 
@@ -107,6 +109,12 @@ app.post("/expense", async (req, res) => {
    res.status(500).json({message:"uhaaa... Issue with the server",error:error.message})
   }
 });
+
+app.get("/expenses/:userId",(req,res)=>{
+
+})
+
+app.delete("/expenses/")
 
 app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on port ${port}`);
