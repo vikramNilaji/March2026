@@ -41,8 +41,8 @@ app.post("/signup", async (req, res) => {
       email,
       password: hashPassword,
     });
-    console.log("original password",password)
-    console.log("Hashed Password",hashPassword)
+    console.log("original password", password);
+    console.log("Hashed Password", hashPassword);
 
     await user.save();
 
@@ -86,6 +86,25 @@ app.post("/signin", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Server error during signin" });
+  }
+});
+
+app.post("/expense", async (req, res) => {
+  try {
+    const { userId, title, amount, category, date } = req.body;
+    const newExpense = await Expense({
+      user: userId,
+      title,
+      amount,
+      category,
+      date,
+    });
+
+    await newExpense.save()
+    res.status(201).json({message:"Expense Added Successfully ",expense:newExpense})
+    res.status(400).json({message:"Error while saving Expense",error:error.message})
+  } catch (error) {
+   res.status(500).json({message:"uhaaa... Issue with the server",error:error.message})
   }
 });
 
