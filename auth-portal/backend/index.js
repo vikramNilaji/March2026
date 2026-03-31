@@ -112,6 +112,7 @@ app.post("/expense", async (req, res) => {
 
 // This tells the app: "All routes in expenseRoutes start with /api/expenses"
 app.use('/api/expenses', expenseRoutes);
+// Make sure to import getTotalExpenses at the top
 
 
 app.listen(port, "0.0.0.0", () => {
