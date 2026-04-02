@@ -1,60 +1,24 @@
 import express from "express";
 const router = express.Router();
-import Expense from "../models/Expense.js";
 import { AddExpenses } from "../Controllers/AddExpenses.js";
-import { getTotalExpenses } from "../Controllers/totalExpenseController.js";
+import { getTotalExpenses } from "../Controllers/totalExpense.js";
 import { GetExpenses } from "../Controllers/GetExpenses.js";
+import { UpdateExpense } from "../Controllers/UpdateExpense.js"; // Make sure to import
+import { DeleteExpense } from "../Controllers/DeleteExpense.js"; // Make sure to import
 
-// Notice we use "router" here
-// Inside your routes file (e.g., expenseRoutes.js)
+// URL: /api/expenses/add
+router.post("/add", AddExpenses);
 
+// URL: /api/expenses/user/:userId (Must have :userId to match your controller)
+router.get("/user/:userId", GetExpenses);
 
-// DELETE an expense by its unique _id
-router.delete("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    
-    // findByIdAndDelete looks for the specific document and removes it
-    const deletedExpense = await Expense.findByIdAndDelete(id);
-
-    if (!deletedExpense) {
-      return res.status(404).json({ message: "Expense not found!" });
-    }
-
-    res.status(200).json({ message: "Expense deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "uhaaa... delete failed", error: error.message });
-  }
-});
-
-// UPDATE an expense by its unique _id
-router.put("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    
-    // { new: true } returns the document AFTER it was updated
-    const updatedExpense = await Expense.findByIdAndUpdate(
-      id, 
-      req.body, 
-      { new: true } 
-    );
-
-    if (!updatedExpense) {
-      return res.status(404).json({ message: "Expense not found!" });
-    }
-
-    res.status(200).json({ 
-      message: "Updated successfully!", 
-      expense: updatedExpense 
-    });
-  } catch (error) {
-    res.status(500).json({ message: "uhaaa... update failed", error: error.message });
-  }
-});
-router.post("/addexpense",AddExpenses)
-router.get("/getexpense",GetExpenses)
+// URL: /api/expenses/total/:userId
 router.get("/total/:userId", getTotalExpenses);
 
+// URL: /api/expenses/update/:id
+router.put("/update/:id", UpdateExpense);
 
+// URL: /api/expenses/delete/:id
+router.delete("/delete/:id", DeleteExpense);
 
 export default router;

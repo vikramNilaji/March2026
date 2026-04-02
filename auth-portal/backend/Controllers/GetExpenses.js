@@ -3,9 +3,7 @@ import express from "express";
 const router = express.Router();
 import Expense from "../models/Expense.js";
 
-export const GetExpenses = () => {
-
-  router.get("/user/:userId", async (req, res) => {
+export const GetExpenses = async(req,res) => {
     try {
       // 1. Extract the userId from the URL parameter (:userId)
       const { userId } = req.params;
@@ -23,6 +21,5 @@ export const GetExpenses = () => {
         error: error.message,
       });
     }
-  });
-}
+  };
 
