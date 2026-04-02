@@ -8,6 +8,7 @@ import jwt from "jsonwebtoken";
 import Expense from "./models/Expense.js"
 import expenseRoutes from './routes/expenseRoutes.js';
 
+
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
@@ -109,7 +110,7 @@ app.post("/expense", async (req, res) => {
 });
 
 
-
+app.use("/api/addexpenses",expenseRoutes)
 // This tells the app: "All routes in expenseRoutes start with /api/expenses"
 app.use('/api/expenses', expenseRoutes);
 // Make sure to import getTotalExpenses at the top
