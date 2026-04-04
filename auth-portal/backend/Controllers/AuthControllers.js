@@ -1,29 +1,88 @@
+// import User from "../models/User.js";
+// import bcrypt from "bcryptjs";
+// import jwt from "jsonwebtoken";
+
+// export const SignUp = async (req, res) => {
+//   try {
+//     const { name, email, password } = req.body;
+//     const userExist = await User.findOne({ email });
+//     if (userExist) {
+//       return res.status(400).json({ error: "User already exists" });
+//     }
+//     const salt = await bcrypt.genSalt(10); //Generate random salt
+//     const hashPassword = await bcrypt.hash(password, salt); //Hash password
+//     const user = new User({
+//       name,
+//       email,
+//       password: hashPassword,
+//     });
+//     console.log("original password", password);
+//     console.log("Hashed Password", hashPassword);
+
+//     await user.save();
+
+//     res.json({
+//       message: "User registered successfully",
+//       user,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ error: "Signup failed" });
+//   }
+// };
+
+// export const SignIn = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(400).json({ error: "Invalid Email or Password" });
+//     }
+
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) {
+//       return res.status(400).json({ error: "Invalid Email or Password" });
+//     }
+
+//     const token = jwt.sign(
+//       { id: user._id },
+//       process.env.JWT_SECRET || "your_secret_key",
+//       { expiresIn: "1h" },
+//     );
+
+//     res.json({
+//       message: "Login successful",
+//       token,
+//       user: {
+//         id: user._id,
+//         name: user.name,
+//         email: user.email,
+//       },
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: "Server error during signin" });
+//   }
+// };
+
 import User from "../models/User.js";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { hashPassword, comparePassword, generateToken } from "../utils/authUtils.js";
 
 export const SignUp = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    const userExist = await User.findOne({ email });
-    if (userExist) {
+    if (await User.findOne({ email })) {
       return res.status(400).json({ error: "User already exists" });
     }
-    const salt = await bcrypt.genSalt(10); //Generate random salt
-    const hashPassword = await bcrypt.hash(password, salt); //Hash password
-    const user = new User({
-      name,
-      email,
-      password: hashPassword,
-    });
-    console.log("original password", password);
-    console.log("Hashed Password", hashPassword);
 
+    // Use our utility to hash the password
+    const hashedPassword = await hashPassword(password);
+
+    const user = new User({ name, email, password: hashedPassword });
     await user.save();
 
     res.json({
       message: "User registered successfully",
-      user,
+      token: generateToken(user._id), // Generate token immediately
     });
   } catch (error) {
     res.status(500).json({ error: "Signup failed" });
@@ -34,32 +93,18 @@ export const SignIn = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user) {
+
+    // Use our utility to compare passwords
+    if (!user || !(await comparePassword(password, user.password))) {
       return res.status(400).json({ error: "Invalid Email or Password" });
     }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ error: "Invalid Email or Password" });
-    }
-
-    const token = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET || "your_secret_key",
-      { expiresIn: "1h" },
-    );
 
     res.json({
       message: "Login successful",
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-      },
+      token: generateToken(user._id), // Use utility to generate token
+      user: { id: user._id, name: user.name, email: user.email },
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: "Server error during signin" });
   }
 };

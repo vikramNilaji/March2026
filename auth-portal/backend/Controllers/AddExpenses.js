@@ -3,9 +3,12 @@ import Expense from "../models/Expense.js";
 
 export const AddExpenses = async (req, res) => {
   try {
-    const { userId, title, amount, category, date } = req.body;
-    const newExpense = await Expense({
-      user: new mongoose.Types.ObjectId(userId),
+    // 1. Removed userId from here because the Token handles it now!
+    const { title, amount, category, date } = req.body;
+
+    // 2. Use 'new Expense' (with a space) to create the instance
+    const newExpense = new Expense({
+      user: req.user.id, // This comes from your 'protect' middleware
       title,
       amount,
       category,
@@ -13,15 +16,15 @@ export const AddExpenses = async (req, res) => {
     });
 
     await newExpense.save();
-    res
-      .status(201)
-      .json({ message: "Expense Added Successfully ", expense: newExpense });
+    
+    res.status(201).json({ 
+      message: "Expense Added Successfully", 
+      expense: newExpense 
+    });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "uhaaa... Issue with the server",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "uhaaa... Issue with the server",
+      error: error.message,
+    });
   }
 };
