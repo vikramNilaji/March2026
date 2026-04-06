@@ -28,6 +28,7 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(data.user));
         alert("Logged in successfully!");
         navigate("/dashboard");
+        
       } else {
         alert(data.message || "Login failed");
       }
@@ -56,7 +57,7 @@ const Login = () => {
           }
           required
         />
-        <button type="submit">Login</button>
+        <button>Login</button>
       </form>
     </div>
   );

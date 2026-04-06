@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 
-
 const Signup = () => {
+  const [isSignedUp, setIsSignedUp] = useState();
+
+ 
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -67,7 +70,8 @@ const Signup = () => {
           onChange={formdataHandle}
           required
         />
-        <button type="submit">Sign Up</button>
+
+       {isSignedUp ?setIsSignedUp(false) :<button  type="submit">Sign Up</button>} 
       </form>
     </div>
   );

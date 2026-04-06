@@ -12,9 +12,9 @@ import ExpenseTracker from "./components/ExpenseTracker";
 import ExpenseForm from "./components/ExpenseForm";
 
 function App() {
-  return (
+ return (
     <Router>
-      <nav
+      <nav 
         style={{
           padding: "20px",
           borderBottom: "1px solid #ccc",
@@ -33,9 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/expense-tracker" element={<ExpenseTracker />} />
-
         <Route path="/add-expense" element={<ExpenseForm />} />
-
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
@@ -43,3 +41,4 @@ function App() {
 }
 
 export default App;
+
