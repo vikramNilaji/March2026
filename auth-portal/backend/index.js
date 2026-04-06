@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 app.use(
   cors({
-    origin: "https://march2026-theta.vercel.app",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],

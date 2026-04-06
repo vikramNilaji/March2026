@@ -19,7 +19,8 @@ const Signup = () => {
     try {
       // Inside handleSubmit
       const response = await fetch(
-        "https://march2026-production.up.railway.app/signup",
+        // "https://march2026-production.up.railway.app/signup"
+        "http://localhost:5000/signup",
         {
           // Added /signup
           method: "POST",
