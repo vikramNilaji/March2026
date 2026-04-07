@@ -9,9 +9,15 @@ const ExpenseForm = () => {
         date: new Date().toISOString().split('T')[0] // Default to today
     });
 
+   const [newForm,setNewForm]=useState('')
+  
     const { title, amount, category, date } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+    function DisplayForm(event){
+    setNewForm({...formData,[event.target.name]: event.target.value})
+   }
+
 
     const onSubmit = async e => {
         e.preventDefault();
@@ -56,7 +62,11 @@ const ExpenseForm = () => {
                     <option value="Other">Other</option>
                 </select>
                 <input type="date" name="date" value={date} onChange={onChange} required />
-                <button type="submit">Add Expense</button>
+                <button type="submit" onClick={DisplayForm}>Add Expense</button>
+                <h2>{newForm.title}</h2>
+                <h2>{newForm.amount}</h2>
+                <h2>{newForm.category}</h2>
+                <h2>{newForm.date}</h2>
             </form>
         </div>
     );
