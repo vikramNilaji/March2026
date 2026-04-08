@@ -1,42 +1,144 @@
-#root {
-  max-width: 1280px;
+:root {
+  --primary: #6366f1;
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --glass: rgba(255, 255, 255, 0.9);
+  --text-dark: #1f2937;
+}
+
+body {
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+}
+
+.expense-tracker-page {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+h2 {
   text-align: center;
+  color: #4338ca;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Flex Container Logic */
+.flex-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Glassmorphism Cards */
+.expense-form, .expense-list-container {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.expense-form {
+  flex: 1;
+  min-width: 320px;
 }
 
-.card {
-  padding: 2em;
+.expense-list-container {
+  flex: 1.5;
+  min-width: 400px;
 }
 
-.read-the-docs {
-  color: #888;
+/* Form Styles */
+.expense-form h3 {
+  margin-top: 0;
+  color: #4b5563;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.expense-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.expense-form input, .expense-form select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.expense-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.expense-form button {
+  background: var(--primary);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.expense-form button:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+/* List Styles */
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  margin-bottom: 12px;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border-left: 5px solid var(--primary);
+  transition: transform 0.2s;
+}
+
+.expense-card:hover {
+  transform: scale(1.02);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info strong {
+  font-size: 1.1rem;
+}
+
+.info small {
+  color: #6b7280;
+}
+
+.amount {
+  font-size: 1.2rem;
+  background: #fee2e2;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.history-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }

@@ -1,0 +1,78 @@
+/* Container for the List */
+.expense-list-container {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  /* Matching shadow with the form */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  max-height: 500px; /* Limits height and allows scrolling if long */
+  overflow-y: auto;
+}
+
+.expense-list-container h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #1f2937;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-left: 4px solid #10b981; /* Green accent for the history side */
+  padding-left: 12px;
+}
+
+/* Individual Expense Item */
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.expense-card:hover {
+  background: #f3f4f6;
+  transform: translateX(5px); /* Subtle slide effect on hover */
+  border-color: #d1d5db;
+}
+
+/* Info Section (Left side) */
+.expense-card .info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.expense-card .info strong {
+  font-size: 1.05rem;
+  color: #111827;
+  text-transform: capitalize;
+}
+
+.expense-card .info small {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Amount Section (Right side) */
+.expense-card .amount {
+  font-size: 1.15rem;
+  font-weight: 700 !important;
+  color: #e11d48 !important; /* A sharp red for expenses */
+  background: #fff1f2; /* Light red background bubble */
+  padding: 6px 14px;
+  border-radius: 999px;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Scrollbar styling for a cleaner look */
+.expense-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.expense-list-container::-webkit-scrollbar-track {
+  background: #f1f1

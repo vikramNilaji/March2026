@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
-
+import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
   const [formData, setFormData] = useState({
@@ -16,11 +15,8 @@ const ExpenseForm = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-
-
   const onSubmit = async (e) => {
     e.preventDefault();
-  
 
     try {
       // 1. Get the token we saved during Sign-in
@@ -91,14 +87,16 @@ const ExpenseForm = () => {
           onChange={onChange}
           required
         />
-        <button type="submit">
+        <button
+          type="submit"
+          className="refresh-btn"
+          onClick={() => window.location.reload()}
+        >
           Add Expense
         </button>
       </form>
-      
     </div>
   );
 };
 
 export default ExpenseForm;
-

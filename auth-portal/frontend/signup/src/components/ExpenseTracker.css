@@ -1,0 +1,84 @@
+/* Container for the whole page */
+.et-container {
+  max-width: 1100px;
+  margin: 1rem auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Header Section */
+.et-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.et-header h2 {
+  font-size: 2.5rem;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.et-header p {
+  color: #718096;
+  font-size: 1.1rem;
+}
+
+/* Responsive Grid Layout */
+.et-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Form is smaller, List is wider */
+  gap: 40px;
+  align-items: start;
+}
+
+/* Section Styling */
+.et-form-section, .et-list-section {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03), 0 4px 10px rgba(0, 0, 0, 0.02);
+  border: 1px solid #edf2f7;
+}
+
+/* List Header inside the card */
+.et-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f7fafc;
+  padding-bottom: 15px;
+}
+
+.et-list-header h3 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.3rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 850px) {
+  .et-main-layout {
+    grid-template-columns: 1fr; /* Stacks vertically on smaller screens */
+  }
+  
+  .et-header h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Button Styling (if you still use it) */
+.history-btn {
+  background-color: #4a5568;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.history-btn:hover {
+  background-color: #2d3748;
+}
