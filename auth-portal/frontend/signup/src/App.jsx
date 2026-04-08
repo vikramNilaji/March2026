@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import ExpenseTracker from "./components/ExpenseTracker";
 import ExpenseForm from "./components/ExpenseForm";
+import ExpenseList from "./components/ExpenseList";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/expense-tracker" element={<ExpenseTracker />} />
         <Route path="/add-expense" element={<ExpenseForm />} />
+        <Route path="/expense-list" element={<ExpenseList />} />
        
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
