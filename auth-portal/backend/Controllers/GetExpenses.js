@@ -5,7 +5,7 @@ export const GetExpenses = async (req, res) => {
   try {
     // 1. SECURE WAY: Get the ID from the 'protect' middleware (the Token)
     // We no longer look at req.params
-    const userId = req.user.id; 
+    const userId = new mongoose.Types.ObjectId(req.user.id);
 
     // 2. Query the database for expenses belonging to THIS token holder
     const expenses = await Expense.find({ user: userId }).sort({ date: -1 });

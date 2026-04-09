@@ -72,7 +72,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ExpenseList.css";
 
-const ExpenseList = ({ refreshTrigger, onActionComplete }) => {
+const ExpenseList = ({ refreshTrigger}) => {
   const [expenses, setExpenses] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
