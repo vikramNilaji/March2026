@@ -6,10 +6,10 @@ import expenseRoutes from "./routes/expenseRoutes.js";
 import { SignUp, SignIn } from "./Controllers/AuthControllers.js";
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 5000;
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://march2026-theta.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
 app.post("/signup", SignUp);
 app.post("/signin", SignIn);
 app.use("/api/expenses", expenseRoutes);
-app.listen(port, "0.0.0.0", () => {
+const port = process.env.PORT || 10000;
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
 });

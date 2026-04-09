@@ -5,7 +5,7 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const API_URL = "http://localhost:5000/api/expenses/add";
+  const API_URL = "https://vaulthub-xm1r.onrender.com/api/expenses/add";
 
   useEffect(() => {
     const fetchUserData = async () => {

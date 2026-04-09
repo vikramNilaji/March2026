@@ -33,7 +33,7 @@ const ExpenseForm = ({onExpenseAdded}) => {
 
       // 3. Make the request
       const res = await axios.post(
-        "http://localhost:5000/api/expenses/add",
+        "https://vaulthub-xm1r.onrender.com/api/expenses/add",
         formData,
         config,
       );

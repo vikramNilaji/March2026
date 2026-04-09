@@ -128,7 +128,7 @@ const ExpenseList = ({ refreshTrigger, onActionComplete }) => {
     const handleUpdate = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`http://localhost:5000/api/expenses/update/${id}`, editForm, {
+            await axios.put(`https://vaulthub-xm1r.onrender.com/api/expenses/update/${id}`, editForm, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setEditingId(null);
