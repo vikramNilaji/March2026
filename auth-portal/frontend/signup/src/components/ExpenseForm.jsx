@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ExpenseForm.css";
+import ExpenseList from "./ExpenseList";
 
-const ExpenseForm = () => {
+const ExpenseForm = ({onExpenseAdded}) => {
   const [formData, setFormData] = useState({
     title: "",
     amount: "",
@@ -47,6 +48,9 @@ const ExpenseForm = () => {
         category: "Food",
         date: new Date().toISOString().split("T")[0],
       });
+      if (onExpenseAdded) {
+        onExpenseAdded(); 
+      }
       // navigate("/expense-list")
     } catch (err) {
       console.error(err.response?.data?.message || "Error adding expense");
@@ -79,6 +83,7 @@ const ExpenseForm = () => {
           <option value="Sports">Sports</option>
           <option value="Bills">Bills</option>
           <option value="Other">Other</option>
+          
         </select>
         <input
           type="date"
@@ -90,11 +95,13 @@ const ExpenseForm = () => {
         <button
           type="submit"
           className="refresh-btn"
-          onClick={() => window.location.reload()}
+          // onClick={() => window.location.reload()}
         >
           Add Expense
         </button>
+         
       </form>
+  
     </div>
   );
 };

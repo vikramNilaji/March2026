@@ -74,5 +74,62 @@
   width: 6px;
 }
 
-.expense-list-container::-webkit-scrollbar-track {
-  background: #f1f1
+.expense-list-container::-webki;
+
+ .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.total-display {
+    background: #1e293b;
+    color: #10b981;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.expense-ul {
+    list-style: none;
+    padding: 0;
+}
+
+.amt-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.amount-val {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.edit-icon, .delete-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.2s;
+}
+
+.edit-icon:hover { transform: scale(1.2); }
+.delete-icon:hover { transform: scale(1.2); color: #ef4444; }
+
+/* Edit Mode Styling */
+.edit-mode-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.edit-mode-container input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.save-btn { background: #10b981; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+.cancel-btn { background: #64748b; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }

@@ -25,10 +25,11 @@
 
 /* Responsive Grid Layout */
 .et-main-layout {
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1.5fr; /* Form is smaller, List is wider */
   gap: 40px;
-  align-items: start;
+  align-items:flex-start;
+  flex: 2;
 }
 
 /* Section Styling */
@@ -82,3 +83,4 @@
 .history-btn:hover {
   background-color: #2d3748;
 }
+
