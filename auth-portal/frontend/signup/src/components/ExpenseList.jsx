@@ -68,127 +68,165 @@
 
 // export default ExpenseList;
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./ExpenseList.css";
 
 const ExpenseList = ({ refreshTrigger, onActionComplete }) => {
-    const [expenses, setExpenses] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [loading, setLoading] = useState(true);
+  const [expenses, setExpenses] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-    // State for Editing
-    const [editingId, setEditingId] = useState(null);
-    const [editForm, setEditForm] = useState({ title: "", amount: "" });
+  // State for Editing
+  const [editingId, setEditingId] = useState(null);
+  const [editForm, setEditForm] = useState({ title: "", amount: "" });
 
-    const fetchExpensesAndTotal = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            const config = { headers: { 'Authorization': `Bearer ${token}` } };
+  const fetchExpensesAndTotal = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const config = { headers: { Authorization: `Bearer ${token}` } };
 
-            // Fetch History
-            const resList = await axios.get('http://localhost:5000/api/expenses/user', config);
-            setExpenses(resList.data);
+      // Fetch History
+      const resList = await axios.get(
+        "https://vaulthub-xm1r.onrender.com/api/expenses/user",
+        config,
+      );
+      setExpenses(resList.data);
 
-            // Fetch Total using your aggregate backend program
-            const resTotal = await axios.get('http://localhost:5000/api/expenses/total', config);
-            setTotal(resTotal.data.totalAmount);
+      // Fetch Total using your aggregate backend program
+      const resTotal = await axios.get(
+        "https://vaulthub-xm1r.onrender.com/api/expenses/total",
+        config,
+      );
+      setTotal(resTotal.data.totalAmount);
 
-            setLoading(false);
-        } catch (err) {
-            console.error("Error:", err.message);
-            setLoading(false);
-        }
-    };
+      setLoading(false);
+    } catch (err) {
+      console.error("Error:", err.message);
+      setLoading(false);
+    }
+  };
 
-    useEffect(() => {
-        fetchExpensesAndTotal();
-    }, [refreshTrigger]);
+  useEffect(() => {
+    fetchExpensesAndTotal();
+  }, [refreshTrigger]);
 
-    // --- DELETE LOGIC ---
-    const handleDelete = async (id) => {
-        if (!window.confirm("Delete this expense?")) return;
-        try {
-            const token = localStorage.getItem('token');
-            await axios.delete(`http://localhost:5000/api/expenses/delete/${id}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            fetchExpensesAndTotal(); // Refresh everything
-        } catch (err) {
-            alert("Delete failed");
-        }
-    };
+  // --- DELETE LOGIC ---
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this expense?")) return;
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(`https://vaulthub-xm1r.onrender.com/api/expenses/delete/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      fetchExpensesAndTotal(); // Refresh everything
+    } catch (err) {
+      alert("Delete failed",err);
+    }
+  };
 
-    // --- UPDATE LOGIC ---
-    const handleEditClick = (item) => {
-        setEditingId(item._id);
-        setEditForm({ title: item.title, amount: item.amount });
-    };
+  // --- UPDATE LOGIC ---
+  const handleEditClick = (item) => {
+    setEditingId(item._id);
+    setEditForm({ title: item.title, amount: item.amount });
+  };
 
-    const handleUpdate = async (id) => {
-        try {
-            const token = localStorage.getItem('token');
-            await axios.put(`https://vaulthub-xm1r.onrender.com/api/expenses/update/${id}`, editForm, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            setEditingId(null);
-            fetchExpensesAndTotal();
-        } catch (err) {
-            alert("Update failed",err);
-        }
-    };
+  const handleUpdate = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.put(
+        `https://vaulthub-xm1r.onrender.com/api/expenses/update/${id}`,
+        editForm,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
+      setEditingId(null);
+      fetchExpensesAndTotal();
+    } catch (err) {
+      alert("Update failed", err);
+    }
+  };
 
-    if (loading) return <p>Fetching transactions...</p>;
+  if (loading) return <p>Fetching transactions...</p>;
 
-    return (
-        <div className="expense-list-container">
-            <div className="list-header">
-                <h3>Recent History</h3>
-                <div className="total-display">Total: ₹{total.toLocaleString('en-IN')}</div>
-            </div>
-
-            {expenses.length === 0 ? (
-                <p>No expenses found.</p>
-            ) : (
-                <ul className="expense-ul">
-                    {expenses.map((item) => (
-                        <li key={item._id} className="expense-card">
-                            {editingId === item._id ? (
-                                /* EDIT MODE */
-                                <div className="edit-mode-container">
-                                    <input 
-                                        value={editForm.title} 
-                                        onChange={(e) => setEditForm({...editForm, title: e.target.value})} 
-                                    />
-                                    <input 
-                                        type="number" 
-                                        value={editForm.amount} 
-                                        onChange={(e) => setEditForm({...editForm, amount: e.target.value})} 
-                                    />
-                                    <button className="save-btn" onClick={() => handleUpdate(item._id)}>Save</button>
-                                    <button className="cancel-btn" onClick={() => setEditingId(null)}>Cancel</button>
-                                </div>
-                            ) : (
-                                /* DISPLAY MODE */
-                                <>
-                                    <div className="info">
-                                        <strong>{item.title}</strong>
-                                        <small>{item.category} • {new Date(item.date).toLocaleDateString()}</small>
-                                    </div>
-                                    <div className="amt-actions">
-                                        <div className="amount-val">₹{item.amount}</div>
-                                        <button className="edit-icon" onClick={() => handleEditClick(item)}>✏️</button>
-                                        <button className="delete-icon" onClick={() => handleDelete(item._id)}>🗑️</button>
-                                    </div>
-                                </>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            )}
+  return (
+    <div className="expense-list-container">
+      <div className="list-header">
+        <h3>Recent History</h3>
+        <div className="total-display">
+          Total: ₹{total.toLocaleString("en-IN")}
         </div>
-    );
+      </div>
+
+      {expenses.length === 0 ? (
+        <p>No expenses found.</p>
+      ) : (
+        <ul className="expense-ul">
+          {expenses.map((item) => (
+            <li key={item._id} className="expense-card">
+              {editingId === item._id ? (
+                /* EDIT MODE */
+                <div className="edit-mode-container">
+                  <input
+                    value={editForm.title}
+                    onChange={(e) =>
+                      setEditForm({ ...editForm, title: e.target.value })
+                    }
+                  />
+                  <input
+                    type="number"
+                    value={editForm.amount}
+                    onChange={(e) =>
+                      setEditForm({ ...editForm, amount: e.target.value })
+                    }
+                  />
+                  <button
+                    className="save-btn"
+                    onClick={() => handleUpdate(item._id)}
+                  >
+                    Save
+                  </button>
+                  <button
+                    className="cancel-btn"
+                    onClick={() => setEditingId(null)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                /* DISPLAY MODE */
+                <>
+                  <div className="info">
+                    <strong>{item.title}</strong>
+                    <small>
+                      {item.category} •{" "}
+                      {new Date(item.date).toLocaleDateString()}
+                    </small>
+                  </div>
+                  <div className="amt-actions">
+                    <div className="amount-val">₹{item.amount}</div>
+                    <button
+                      className="edit-icon"
+                      onClick={() => handleEditClick(item)}
+                    >
+                      ✏️
+                    </button>
+                    <button
+                      className="delete-icon"
+                      onClick={() => handleDelete(item._id)}
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 };
 
 export default ExpenseList;
-
