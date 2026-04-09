@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 app.post("/signup", SignUp);
 app.post("/signin", SignIn);
 app.use("/api/expenses", expenseRoutes);
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 5000;
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
 });
