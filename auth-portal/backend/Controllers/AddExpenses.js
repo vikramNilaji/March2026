@@ -8,7 +8,7 @@ export const AddExpenses = async (req, res) => {
 
     // 2. Use 'new Expense' (with a space) to create the instance
     const newExpense = new Expense({
-      user: req.user.id, // This comes from your 'protect' middleware
+      user:  new mongoose.Types.ObjectId(req.user.id), // This comes from your 'protect' middleware
       title,
       amount,
       category,
