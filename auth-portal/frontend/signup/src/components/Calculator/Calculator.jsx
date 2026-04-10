@@ -17,7 +17,7 @@ const Calculator = () => {
       // Using Function constructor is safer than eval()
       setResult(Number(Function("return " + result)()).toString());
     } catch (err) {
-      setResult("Error",err);
+      setResult("Error", err);
     }
   };
 
