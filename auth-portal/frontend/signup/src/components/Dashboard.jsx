@@ -96,9 +96,16 @@ const Dashboard = () => {
           <p>Update your profile and security options.</p>
           <button className="secondary-btn">Edit Profile</button>
         </div>
-        <div className="card" onClick={() => navigate("/calculator")}>
-          <h3>🧮 Calculator</h3>
+        <div className="app-card" >
+        <div className="card-icon">🧮 </div>
+          <h3>Calculator</h3>
           <p>Quick math and unit conversions.</p>
+          <button
+            className="launch-btn"
+            onClick={() => navigate("/calculator")}
+          >
+            Open App
+          </button>
         </div>
       </main>
     </div>
