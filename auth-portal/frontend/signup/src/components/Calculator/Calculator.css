@@ -1,7 +1,7 @@
 /* Container to center everything on the screen */
 .calc-container {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   min-height: 80vh;
 }
