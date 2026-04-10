@@ -84,6 +84,7 @@ function App() {
           <Route path="/add-expense" element={<ExpenseForm />} />
           <Route path="/expense-list" element={<ExpenseList />} />
           <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="/calculator" element={<Calculator />} />
         </Routes>
       </main>
     </Router>

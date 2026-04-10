@@ -1,0 +1,22 @@
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
+}
+
+.display {
+  grid-column: span 4;
+  height: 60px;
+  background: #e0e0e0;
+  text-align: right;
+  font-size: 2rem;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
+}
+/* Use .span-two { grid-column: span 2; } for Clear and = buttons */

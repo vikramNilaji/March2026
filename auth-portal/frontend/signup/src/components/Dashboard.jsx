@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react' ;
-import { useNavigate } from 'react-router-dom';
-import "./Dashboard.css"; 
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Dashboard.css";
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -9,31 +9,30 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
 
-     
       if (!token) {
-        navigate('/login');
+        navigate("/login");
         return;
       }
 
       try {
-        const savedUser = JSON.parse(localStorage.getItem('user'));
-        
+        const savedUser = JSON.parse(localStorage.getItem("user"));
+
         if (savedUser) {
           setUser(savedUser);
         } else {
           // If you have a /me or /profile route on backend, fetch it here
-           const res = await fetch(`${API_URL}/profile`, { 
-             headers: { Authorization: `Bearer ${token}` } 
-           });
-           const data = await res.json();
-           setUser(data);
+          const res = await fetch(`${API_URL}/profile`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          const data = await res.json();
+          setUser(data);
         }
       } catch (error) {
         console.error("Dashboard error:", error);
-        localStorage.removeItem('token');
-        navigate('/login');
+        localStorage.removeItem("token");
+        navigate("/login");
       } finally {
         setLoading(false);
       }
@@ -43,9 +42,9 @@ const Dashboard = () => {
   }, [navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    navigate('/login');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
   };
 
   if (loading) return <div className="loader">Loading your workspace...</div>;
@@ -54,12 +53,16 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <nav className="dashboard-nav">
         <h2>Personal Portal</h2>
-        <button onClick={handleLogout} className="logout-btn">Logout</button>
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
       </nav>
 
       <header className="dashboard-header">
         <h1>Welcome back, {user?.name || "Developer"}! 👋</h1>
-        <p>Logged in as: <strong>{user?.email}</strong></p>
+        <p>
+          Logged in as: <strong>{user?.email}</strong>
+        </p>
       </header>
 
       <main className="dashboard-grid">
@@ -68,9 +71,9 @@ const Dashboard = () => {
           <div className="card-icon">💰</div>
           <h3>Expense Tracker</h3>
           <p>Manage your daily budget and track spending.</p>
-          <button 
+          <button
             className="launch-btn"
-            onClick={() => navigate('/expense-tracker')}
+            onClick={() => navigate("/expense-tracker")}
           >
             Open App
           </button>
@@ -81,7 +84,9 @@ const Dashboard = () => {
           <div className="card-icon">📝</div>
           <h3>Task Manager</h3>
           <p>Stay organized with a simple to-do list.</p>
-          <button disabled className="coming-soon-btn">Coming Soon</button>
+          <button disabled className="coming-soon-btn">
+            Coming Soon
+          </button>
         </div>
 
         {/* Settings Card */}
@@ -91,9 +96,14 @@ const Dashboard = () => {
           <p>Update your profile and security options.</p>
           <button className="secondary-btn">Edit Profile</button>
         </div>
+        <div className="card" onClick={() => navigate("/calculator")}>
+          <h3>🧮 Calculator</h3>
+          <p>Quick math and unit conversions.</p>
+        </div>
       </main>
     </div>
   );
 };
 
 export default Dashboard;
+
