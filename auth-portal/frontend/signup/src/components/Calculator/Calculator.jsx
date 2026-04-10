@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./Calculator.css";
 
 const Calculator = () => {
   const [result, setResult] = useState("");
@@ -17,7 +17,7 @@ const Calculator = () => {
       // Using Function constructor is safer than eval()
       setResult(Number(Function("return " + result)()).toString());
     } catch (err) {
-      setResult("Error");
+      setResult("Error",err);
     }
   };
 
