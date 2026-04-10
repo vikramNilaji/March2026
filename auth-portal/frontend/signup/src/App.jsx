@@ -11,6 +11,7 @@ import Dashboard from "./components/Dashboard";
 import ExpenseTracker from "./components/ExpenseTracker";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
+import Calculator from "./components/Calculator/Calculator";
 // import { useState } from "react";
 
 function App() {
