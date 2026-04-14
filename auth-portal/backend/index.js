@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://march2026-theta.vercel.app",
+    origin: "https://https://vikramsvaulthub-theta.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
