@@ -60,8 +60,8 @@ const Login = () => {
         <button>Login</button>
       </form>
       <h2>Guest Login Credentials</h2>
-      <h3>Email : guest@gmail.com </h3>
-      <h3>Password: 123456</h3>
+      <h3 style={{color:"black"}}>Email : guest@gmail.com </h3>
+      <h3 style={{color:"black"}}>Password: 123456</h3>
     </div>
   );
 };
