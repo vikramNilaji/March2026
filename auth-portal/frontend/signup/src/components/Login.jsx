@@ -59,6 +59,9 @@ const Login = () => {
         />
         <button>Login</button>
       </form>
+      <h2>Guest Login Credentials</h2>
+      <h3>Email : guest@gmail.com </h3>
+      <h3>Password: 123456</h3>
     </div>
   );
 };
