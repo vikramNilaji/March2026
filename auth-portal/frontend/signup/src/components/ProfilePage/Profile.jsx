@@ -5,7 +5,7 @@ import { MapPin } from "lucide-react";
 
 const Profile = () => {
   return (
-    <div className="profile-page-wrapper">
+    <div className="profile-page-container">
       <header className="hero">
         <div className="profile-image-container">
           <img
