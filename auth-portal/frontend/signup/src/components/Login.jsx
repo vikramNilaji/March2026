@@ -61,7 +61,7 @@ const Login = () => {
           required
         />
 <button type="submit" disabled={isLoading}>
-          {isLoading ? <div className="spinner"></div> : "Sign In"}
+          {isLoading ? <div className="spinner"></div> : "Log in"}
         </button>
       </form>
       <h2>Guest Login Credentials</h2>
