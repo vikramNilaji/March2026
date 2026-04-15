@@ -34,6 +34,7 @@ const Login = () => {
         
       } else {
         alert(data.message || "Login failed");
+        setIsLoading(false)
       }
     } catch (err) {
       console.error("Login Error:", err.message);
