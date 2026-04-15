@@ -13,7 +13,7 @@ import ExpenseTracker from "./components/ExpenseTracker";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Calculator from "./components/Calculator/Calculator";
-const token = localStorage.getItem("token");
+
 
 // import { useState } from "react";
 
