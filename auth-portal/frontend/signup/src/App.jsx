@@ -51,8 +51,9 @@ function App() {
         >
           🚀 Portal
         </div>
-
+        
         <div style={{ display: "flex", gap: "10px" }}>
+          <Link to="/profile" style={linkStyle}>Vikram's Profile</Link>
           <Link to="/login" style={linkStyle}>
             Login
           </Link>
