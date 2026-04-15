@@ -54,14 +54,7 @@ function App() {
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
-          <Link to="/login" style={linkStyle}>
-            Login
-          </Link>
-          <Link to="/signup" style={linkStyle}>
-            Signup
-          </Link>
-
-          <Link
+         <Link
             to="/dashboard"
             style={{
               ...linkStyle,

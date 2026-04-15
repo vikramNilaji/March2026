@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -71,8 +70,13 @@ const Login = () => {
         </button>
       </form>
       <div>
-        <h3>Don't Have Account?</h3>
-        <button onClick={() => navigate("/signup")}>Signup</button>
+        <h3 style={{ color: "black" }}>Don't Have Account?</h3>
+        <button
+          onClick={() => navigate("/signup")}
+          style={{ backgroundColor: "blue", color: "white" }}
+        >
+          Signup
+        </button>
       </div>
       <h2>Guest Login Credentials</h2>
       <h3 style={{ color: "black" }}>Email : guest@gmail.com </h3>
