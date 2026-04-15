@@ -63,6 +63,12 @@ function App() {
           <Link to="/signup" style={linkStyle}>Signup</Link>
         </>
       )}
+      {token && (
+        <>
+          <Link to="/login" style={linkStyle}>Login</Link>
+          <Link to="/signup" style={linkStyle}>Signup</Link>
+        </>
+      )}
           <Link to="/profile" style={linkStyle}>Vikram's Profile</Link>
 
           <Link
