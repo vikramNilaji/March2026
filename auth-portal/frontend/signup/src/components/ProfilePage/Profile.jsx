@@ -1,32 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Profile.css";
-import { MapPin } from "lucide-react"; // Import the icon
-
-// Inside your return:
+import { MapPin } from "lucide-react"; 
 
 const Profile = () => {
   return (
-    <>
+    <div className="profile-page-wrapper">
       <header className="hero">
-        <div className="profile-container">
-          <div className="profile-image-container">
-            <img
-              src="/vikram.jpg"
-              alt="Vikram"
-              className="profile-pic"
-            />
-          </div>
+        <div className="profile-image-container">
+          <img
+            src="/vikram.jpg"
+            alt="Vikram"
+            className="profile-pic"
+          />
         </div>
+        
         <p className="location">
           <MapPin size={18} color="#60a5fa" /> Belagavi, India
         </p>
+        
         <h2>Vikram</h2>
         <p className="tagline">Full-Stack MERN Developer</p>
+        
         <div className="cta-buttons">
-          {/* <Link to="/signin" className="btn-primary">
+          <Link to="/login" className="btn-primary">
             Launch VaultHub
-          </Link> */}
+          </Link>
           <a href="#projects" className="btn-secondary">
             View Work
           </a>
@@ -36,7 +35,7 @@ const Profile = () => {
       <section className="about-section">
         <h2>The Journey</h2>
         <p>
-          Results-driven Full Stack Web Developer with over 1 year of
+          Results-driven Full Stack Web Developer with over 3 years of
           professional experience and a deep focus on the MERN stack. Skilled in
           architecting scalable web applications, designing RESTful APIs, and
           translating complex design mock-ups into high-performance React
@@ -45,7 +44,6 @@ const Profile = () => {
         </p>
       </section>
 
-      {/* Skills Section */}
       <section className="skills-grid">
         <div className="skill-card">MongoDB</div>
         <div className="skill-card">Express.js</div>
@@ -53,7 +51,6 @@ const Profile = () => {
         <div className="skill-card">Node.js</div>
       </section>
 
-      {/* Project Gallery */}
       <section id="projects" className="project-gallery">
         <h2>Live Applications</h2>
         <div className="projects-container">
@@ -67,7 +64,7 @@ const Profile = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
