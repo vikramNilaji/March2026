@@ -1,0 +1,139 @@
+/* General Layout */
+.profile-container {
+  background: radial-gradient(circle at top right, #1e293b, #0f172a);
+  color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 40px 20px;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 80px 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #60a5fa, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.5);
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1px solid #475569;
+  color: #f8fafc;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* About Section */
+.about-section {
+  max-width: 700px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.skill-card {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  color: #60a5fa;
+}
+
+/* Project Cards */
+.project-gallery {
+  max-width: 1000px;
+  margin: 80px auto;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 20px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: #3b82f6;
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.project-card h3 {
+  color: #f8fafc;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* Responsive Mobile Adjustments */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 2.5rem; }
+  .cta-buttons { flex-direction: column; }
+}

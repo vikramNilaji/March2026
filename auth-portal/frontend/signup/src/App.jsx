@@ -5,6 +5,7 @@ import {
   Link,
   Navigate,
 } from "react-router-dom";
+import Profile from "./components/ProfilePage/Profile";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -86,6 +87,7 @@ function App() {
           <Route path="/expense-list" element={<ExpenseList />} />
           <Route path="*" element={<Navigate to="/login" />} />
           <Route path="/calculator" element={<Calculator />} />
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </main>
     </Router>
