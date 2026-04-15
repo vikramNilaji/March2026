@@ -7,19 +7,17 @@ import { MapPin } from "lucide-react"; // Import the icon
 
 const Profile = () => {
   return (
-    
-
+    <>
       <header className="hero">
-      <div className="profile-container">
-      <div className="profile-image-container">
-        
-        <img
-          src="/vikram.jpg"
-          alt="Vikram"
-          className="profile-pic"
-        />
-      </div>
-      </div>
+        <div className="profile-container">
+          <div className="profile-image-container">
+            <img
+              src="/vikram.jpg"
+              alt="Vikram"
+              className="profile-pic"
+            />
+          </div>
+        </div>
         <p className="location">
           <MapPin size={18} color="#60a5fa" /> Belagavi, India
         </p>
@@ -35,7 +33,6 @@ const Profile = () => {
         </div>
       </header>
 
-      {/* About Section - Highlighting your discipline */}
       <section className="about-section">
         <h2>The Journey</h2>
         <p>
@@ -70,7 +67,7 @@ const Profile = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
