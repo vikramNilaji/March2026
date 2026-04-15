@@ -23,7 +23,7 @@ const Profile = () => {
         <p className="location">
           <MapPin size={18} color="#60a5fa" /> Belagavi, India
         </p>
-        <h1>Vikram</h1>
+        <h2>Vikram</h2>
         <p className="tagline">Full-Stack MERN Developer</p>
         <div className="cta-buttons">
           {/* <Link to="/signin" className="btn-primary">
