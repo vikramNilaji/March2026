@@ -30,7 +30,6 @@ function App() {
     border: "1px solid transparent",
   };
 
-
   return (
     <Router>
       <nav
@@ -54,18 +53,15 @@ function App() {
           🚀 Portal
         </div>
 
-          
-        
         <div style={{ display: "flex", gap: "10px" }}>
-        {!token && (
-        <>
-          <Link to="/login" style={linkStyle}>Login</Link>
-          <Link to="/signup" style={linkStyle}>Signup</Link>
-        </>
-      )}
-      {token && (
-        <>
-            <Link
+          <Link to="/login" style={linkStyle}>
+            Login
+          </Link>
+          <Link to="/signup" style={linkStyle}>
+            Signup
+          </Link>
+
+          <Link
             to="/dashboard"
             style={{
               ...linkStyle,
@@ -75,11 +71,10 @@ function App() {
           >
             Dashboard
           </Link>
-        </>
-      )}
-          <Link to="/profile" style={linkStyle}>Vikram's Profile</Link>
 
-        
+          <Link to="/profile" style={linkStyle}>
+            Vikram's Profile
+          </Link>
         </div>
       </nav>
 
@@ -97,7 +92,7 @@ function App() {
           <Route path="/expense-list" element={<ExpenseList />} />
           <Route path="*" element={<Navigate to="/login" />} />
           <Route path="/calculator" element={<Calculator />} />
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
     </Router>
