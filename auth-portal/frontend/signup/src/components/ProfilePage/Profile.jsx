@@ -7,18 +7,28 @@ import { MapPin } from "lucide-react"; // Import the icon
 
 const Profile = () => {
   return (
-    <div className="profile-container">
-      {/* Hero Section */}
+    
+
       <header className="hero">
+      <div className="profile-container">
+      <div className="profile-image-container">
+        
+        <img
+          src="/vikram.jpg"
+          alt="Vikram"
+          className="profile-pic"
+        />
+      </div>
+      </div>
         <p className="location">
           <MapPin size={18} color="#60a5fa" /> Belagavi, India
         </p>
         <h1>Vikram</h1>
         <p className="tagline">Full-Stack MERN Developer</p>
         <div className="cta-buttons">
-          <Link to="/signin" className="btn-primary">
+          {/* <Link to="/signin" className="btn-primary">
             Launch VaultHub
-          </Link>
+          </Link> */}
           <a href="#projects" className="btn-secondary">
             View Work
           </a>

@@ -14,7 +14,6 @@ import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Calculator from "./components/Calculator/Calculator";
 
-
 // import { useState } from "react";
 
 function App() {
@@ -47,14 +46,8 @@ function App() {
           boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
         }}
       >
-        <div
-          style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#1f2937" }}
-        >
-          🚀 Portal
-        </div>
-
         <div style={{ display: "flex", gap: "10px" }}>
-         <Link
+          <Link
             to="/dashboard"
             style={{
               ...linkStyle,
