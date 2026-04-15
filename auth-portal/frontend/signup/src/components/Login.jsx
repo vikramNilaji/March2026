@@ -4,11 +4,14 @@ import "./Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
+    
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await fetch("https://vaulthub-xm1r.onrender.com/signin", { // Verify this path!
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,7 +60,9 @@ const Login = () => {
           }
           required
         />
-        <button>Login</button>
+<button type="submit" disabled={isLoading}>
+          {isLoading ? <div className="spinner"></div> : "Sign In"}
+        </button>
       </form>
       <h2>Guest Login Credentials</h2>
       <h3 style={{color:"black"}}>Email : guest@gmail.com </h3>
