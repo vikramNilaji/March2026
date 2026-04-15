@@ -65,13 +65,7 @@ function App() {
       )}
       {token && (
         <>
-          <Link to="/login" style={linkStyle}>Login</Link>
-          <Link to="/signup" style={linkStyle}>Signup</Link>
-        </>
-      )}
-          <Link to="/profile" style={linkStyle}>Vikram's Profile</Link>
-
-          <Link
+            <Link
             to="/dashboard"
             style={{
               ...linkStyle,
@@ -81,6 +75,11 @@ function App() {
           >
             Dashboard
           </Link>
+        </>
+      )}
+          <Link to="/profile" style={linkStyle}>Vikram's Profile</Link>
+
+        
         </div>
       </nav>
 
