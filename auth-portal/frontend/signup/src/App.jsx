@@ -13,6 +13,8 @@ import ExpenseTracker from "./components/ExpenseTracker";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Calculator from "./components/Calculator/Calculator";
+const token = localStorage.getItem("token");
+
 // import { useState } from "react";
 
 function App() {
@@ -28,7 +30,7 @@ function App() {
     border: "1px solid transparent",
   };
 
-  const isAuthenticated = !!localStorage.getItem("token");
+
   return (
     <Router>
       <nav
@@ -51,16 +53,18 @@ function App() {
         >
           🚀 Portal
         </div>
+
+          
         
         <div style={{ display: "flex", gap: "10px" }}>
+        {!token && (
+        <>
+          <Link to="/login" style={linkStyle}>Login</Link>
+          <Link to="/signup" style={linkStyle}>Signup</Link>
+        </>
+      )}
           <Link to="/profile" style={linkStyle}>Vikram's Profile</Link>
-          <Link to="/login" style={linkStyle}>
-            Login
-          </Link>
 
-          <Link to="/signup" style={linkStyle}>
-            Signup
-          </Link>
           <Link
             to="/dashboard"
             style={{

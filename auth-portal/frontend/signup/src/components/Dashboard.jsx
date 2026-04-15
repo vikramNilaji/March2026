@@ -53,9 +53,11 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <nav className="dashboard-nav">
         <h2>Personal Portal</h2>
-        <button onClick={handleLogout} className="logout-btn">
-          Logout
-        </button>
+        <button className="logout-btn" onClick={
+            handleLogout
+          }>
+            Logout
+          </button>
       </nav>
 
       <header className="dashboard-header">

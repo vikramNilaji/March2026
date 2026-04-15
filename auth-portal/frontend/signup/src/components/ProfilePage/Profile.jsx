@@ -14,7 +14,7 @@ const Profile = () => {
           <MapPin size={18} color="#60a5fa" /> Belagavi, India
         </p>
         <h1>Vikram</h1>
-        <p className="tagline">Full-Stack MERN Developer in Training</p>
+        <p className="tagline">Full-Stack MERN Developer</p>
         <div className="cta-buttons">
           <Link to="/signin" className="btn-primary">
             Launch VaultHub
@@ -29,10 +29,12 @@ const Profile = () => {
       <section className="about-section">
         <h2>The Journey</h2>
         <p>
-          By day, I manage a professional 9-to-5 role. By night, I build the
-          future. For the past 3 years, I've dedicated my time to mastering the
-          **MERN Stack**, focusing on secure authentication and scalable web
-          architecture.
+          Results-driven Full Stack Web Developer with over 1 year of
+          professional experience and a deep focus on the MERN stack. Skilled in
+          architecting scalable web applications, designing RESTful APIs, and
+          translating complex design mock-ups into high-performance React
+          components. Proven track record of deploying live production
+          applications and implementing secure authentication protocols.
         </p>
       </section>
 
