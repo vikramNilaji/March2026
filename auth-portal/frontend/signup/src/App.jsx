@@ -17,24 +17,34 @@ import Calculator from "./components/Calculator/Calculator";
 function App() {
   const linkStyle = {
     textDecoration: "none",
-    color: "#4f46e5",
+    color: "#1e293b", // Dark slate for readability
     fontWeight: "600",
     padding: "8px 16px",
     borderRadius: "8px",
     transition: "all 0.3s ease",
     fontSize: "0.95rem",
-    border: "1px solid transparent",
+    border: "1px solid rgba(0,0,0,0.05)",
+    background: "#fef08a", // Light Yellow accent
   };
 
   return (
     <Router>
-      <nav>
+      <nav 
+        style={{ 
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center",
+          padding: "15px 40px",
+          background: "linear-gradient(to right, #60a5fa, #93c5fd)", // Light Blue Gradient
+          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+        }}
+      >
         <div style={{ display: "flex", gap: "10px" }}>
           <Link
             to="/dashboard"
             style={{
               ...linkStyle,
-              background: "#4f46e5",
+              background: "#1d4ed8", // Strong Blue
               color: "white",
             }}
           >
@@ -49,7 +59,13 @@ function App() {
 
       {/* Main Container to give space below nav */}
       <main
-        style={{ padding: "40px 20px", maxWidth: "1200px", margin: "0 auto" }}
+        style={{ 
+          padding: "40px 20px", 
+          maxWidth: "1200px", 
+          margin: "0 auto",
+          minHeight: "100vh",
+          background: "#f8fafc" // Very light blue-grey background for the page
+        }}
       >
         <Routes>
           <Route path="/" element={<Login />} />
