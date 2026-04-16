@@ -14,10 +14,7 @@ import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Calculator from "./components/Calculator/Calculator";
 
-
-
 function App() {
- 
   const linkStyle = {
     textDecoration: "none",
     color: "#4f46e5",
@@ -34,7 +31,8 @@ function App() {
       <nav
         style={{
           padding: "15px 40px",
-          background: "rgba(255, 255, 255, 0.8)",
+          background:
+            "linear-gradient(45deg, rgba(165, 199, 12, 0.541) 0%, rgba(9, 9, 121, 1) 12%, rgba(0, 212, 255, 1) 51%)",
           backdropFilter: "blur(10px)", // Blurred background effect
           borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
           display: "flex",
@@ -43,7 +41,7 @@ function App() {
           position: "sticky",
           top: 0,
           zIndex: 1000,
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
+          boxShadow: "0 4px 6px -1px rgba(182, 41, 41, 0.84)",
         }}
       >
         <div style={{ display: "flex", gap: "10px" }}>
