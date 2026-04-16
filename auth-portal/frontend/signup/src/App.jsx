@@ -29,14 +29,19 @@ function App() {
 
   return (
     <Router>
-      <nav 
-        style={{ 
-          display: "flex", 
-          justifyContent: "space-between", 
-          alignItems: "center",
+      <nav
+        style={{
           padding: "15px 40px",
-          background: "linear-gradient(to right, #60a5fa, #93c5fd)", // Light Blue Gradient
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+          /* The line below MUST have quotes around the gradient */
+          backgroundImage:
+            "linear-gradient(to right top, #60a5fa, #93c5fd, #fef08a)",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          position: "sticky",
+          top: 0,
+          zIndex: 1000,
+          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
         }}
       >
         <div style={{ display: "flex", gap: "10px" }}>
@@ -59,12 +64,12 @@ function App() {
 
       {/* Main Container to give space below nav */}
       <main
-        style={{ 
-          padding: "40px 20px", 
-          maxWidth: "1200px", 
+        style={{
+          padding: "40px 20px",
+          maxWidth: "1200px",
           margin: "0 auto",
           minHeight: "100vh",
-          background: "#f8fafc" // Very light blue-grey background for the page
+          background: "#f8fafc", // Very light blue-grey background for the page
         }}
       >
         <Routes>
