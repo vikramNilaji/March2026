@@ -31,8 +31,8 @@ function App() {
       <nav
         style={{
           padding: "15px 40px",
-          background:"linear-gradient(#decc13, #e1b20f, #de9918, #d88122, #cd6a2b)",
-          borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+          backgroundImage:
+            "linear-gradient(to right top, #1386de, #9770ce, #d058a0, #e15464, #cd6a2b)",
           display: "flex",
           justifyContent: "space-between", // Pushes content to sides
           alignItems: "center",
