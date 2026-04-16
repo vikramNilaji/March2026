@@ -37,8 +37,7 @@
   justify-content: center;
 }
 
-.btn-primary,
-.btn-secondary {
+.btn-primary, .btn-secondary {
   padding: 12px 28px;
   border-radius: 8px;
   text-decoration: none;
@@ -72,7 +71,7 @@
   margin: 60px auto;
   text-align: center;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.03);
+  background:linear-gradient(to right top, #a61794, #ec1067, #ff642a, #ebac00, #a8eb12);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -87,7 +86,7 @@
 }
 
 .skill-card {
-  background: linear-gradient(to right top, #a61794, #ec1067, #ff642a, #ebac00, #a8eb12);
+  background: rgba(190, 246, 59, 0.1);
   border: 1px solid rgba(59, 130, 246, 0.2);
   padding: 15px;
   border-radius: 12px;
@@ -135,13 +134,8 @@
 
 /* Responsive Mobile Adjustments */
 @media (max-width: 640px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-  }
+  .hero h1 { font-size: 2.5rem; }
+  .cta-buttons { flex-direction: column; }
 }
 
 .profile-image-container {
@@ -153,12 +147,9 @@
 .profile-pic {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
-  /* Makes it circular */
-  object-fit: cover;
-  /* Prevents stretching */
-  border: 4px solid rgba(59, 130, 246, 0.5);
-  /* Blue glow border */
+  border-radius: 50%; /* Makes it circular */
+  object-fit: cover; /* Prevents stretching */
+  border: 4px solid rgba(59, 130, 246, 0.5); /* Blue glow border */
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   transition: transform 0.3s ease;
 }
