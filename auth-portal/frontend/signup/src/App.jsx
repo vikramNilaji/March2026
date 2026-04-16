@@ -29,17 +29,18 @@ function App() {
   return (
     <Router>
       <nav
-        style={{
-          padding: "15px 40px",
-          backgroundImage:
-            "linear-gradient(to right top, #1386de, #9770ce, #d058a0, #e15464, #cd6a2b)",
+       style={{
+          padding: "12px 40px",
+          background: "linear-gradient(135deg, #293b 0%, #72aa 100%)", // Professional Dark Slate
+          borderBottom: "1px solid rgba(175, 202, 21, 0.81)",
           display: "flex",
-          justifyContent: "space-between", // Pushes content to sides
+          justifyContent: "space-between",
           alignItems: "center",
           position: "sticky",
           top: 0,
           zIndex: 1000,
-          boxShadow: "0 4px 6px -1px rgba(182, 41, 41, 0.84)",
+          backdropFilter: "blur(12px)",
+          boxShadow: "0 4px 20px rgba(120, 175, 31, 0.88)",
         }}
       >
         <div style={{ display: "flex", gap: "10px" }}>
