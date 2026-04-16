@@ -37,7 +37,7 @@ function App() {
           padding: "15px 40px",
           background: "linear-gradient(to right, #60a5fa, #93c5fd)", // Light Blue Gradient
           boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-          border:"2px solid blue",
+          border:"2px solid red",
           borderRadius:"0.5rem"
         }}
       >
@@ -63,7 +63,7 @@ function App() {
       {/* Main Container to give space below nav */}
       <main
         style={{
-          border:"2px solid blue",
+          border:"2px solid red",
           borderRadius:"0.5rem",
           padding: "40px 20px",
           maxWidth: "1200px",
