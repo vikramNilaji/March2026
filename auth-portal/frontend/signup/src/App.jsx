@@ -14,7 +14,10 @@ import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Calculator from "./components/Calculator/Calculator";
 
+
+
 function App() {
+ 
   const linkStyle = {
     textDecoration: "none",
     color: "#4f46e5",
@@ -29,19 +32,7 @@ function App() {
   return (
     <Router>
       <nav
-       style={{
-          padding: "12px 40px",
-          background: "linear-gradient(135deg, #293b 0%, #72aa 100%)", // Professional Dark Slate
-          borderBottom: "1px solid rgba(175, 202, 21, 0.81)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          position: "sticky",
-          top: 0,
-          zIndex: 1000,
-          backdropFilter: "blur(12px)",
-          boxShadow: "0 4px 20px rgba(120, 175, 31, 0.88)",
-        }}
+       
       >
         <div style={{ display: "flex", gap: "10px" }}>
           <Link
