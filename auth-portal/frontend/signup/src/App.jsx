@@ -17,26 +17,28 @@ import Calculator from "./components/Calculator/Calculator";
 function App() {
   const linkStyle = {
     textDecoration: "none",
-    color: "#b6ce2fde", // Dark slate for readability
+    color: "#ffff", // Dark slate for readability
     fontWeight: "600",
     padding: "8px 16px",
-    borderRadius: "8px",
+    borderRadius: "10px",
     transition: "all 0.3s ease",
     fontSize: "0.95rem",
-    border: "1px solid rgba(211, 23, 23, 0.84)",
-    background: "#fef08a", // Light Yellow accent
-  };
+    border: "1px solid rgba(230, 49, 49, 0.84)",
+    background: "rgb(92, 117, 202)",
+    };
 
   return (
     <Router>
-      <nav 
-        style={{ 
-          display: "flex", 
-          justifyContent: "space-between", 
+      <nav
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
           alignItems: "center",
           padding: "15px 40px",
           background: "linear-gradient(to right, #60a5fa, #93c5fd)", // Light Blue Gradient
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          border:"2px solid blue",
+          borderRadius:"0.5rem"
         }}
       >
         <div style={{ display: "flex", gap: "10px" }}>
@@ -44,7 +46,8 @@ function App() {
             to="/dashboard"
             style={{
               ...linkStyle,
-             background: "linear-gradient(to right top, #1386de, #9770ce, #d058a0, #e15464, #cd6a2b)",
+              background:
+                "linear-gradient(to right top, #1386de, #9770ce, #d058a0, #e15464, #cd6a2b)",
               color: "white",
             }}
           >
@@ -59,12 +62,15 @@ function App() {
 
       {/* Main Container to give space below nav */}
       <main
-        style={{ 
-          padding: "40px 20px", 
-          maxWidth: "1200px", 
+        style={{
+          border:"2px solid blue",
+          borderRadius:"0.5rem",
+          padding: "40px 20px",
+          maxWidth: "1200px",
           margin: "0 auto",
           minHeight: "100vh",
-          background: "linear-gradient(to right top, #1326de, #a23456, #d118a0, #a15464, #ff6a2b)",
+          background:
+            "linear-gradient(to right top, #1326de, #a23456, #d118a0, #a15464, #ff6a2b)",
         }}
       >
         <Routes>
