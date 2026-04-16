@@ -44,7 +44,7 @@ function App() {
             to="/dashboard"
             style={{
               ...linkStyle,
-              background: "#1d4ed8", // Strong Blue
+             background: "linear-gradient(to right top, #1386de, #9770ce, #d058a0, #e15464, #cd6a2b)",
               color: "white",
             }}
           >
@@ -64,7 +64,7 @@ function App() {
           maxWidth: "1200px", 
           margin: "0 auto",
           minHeight: "100vh",
-          background: "#f8fafc" // Very light blue-grey background for the page
+          background: "linear-gradient(to right top, #1326de, #a23456, #d118a0, #a15464, #ff6a2b)",
         }}
       >
         <Routes>
