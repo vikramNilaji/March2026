@@ -14,10 +14,7 @@ import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Calculator from "./components/Calculator/Calculator";
 
-
-
 function App() {
- 
   const linkStyle = {
     textDecoration: "none",
     color: "#4f46e5",
@@ -31,9 +28,7 @@ function App() {
 
   return (
     <Router>
-      <nav
-       
-      >
+      <nav>
         <div style={{ display: "flex", gap: "10px" }}>
           <Link
             to="/dashboard"
