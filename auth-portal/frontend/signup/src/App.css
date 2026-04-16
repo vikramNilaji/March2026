@@ -3,6 +3,7 @@
   --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   --glass: rgba(255, 255, 255, 0.9);
   --text-dark: #1f2937;
+   display: flex;
 }
 
 body {
