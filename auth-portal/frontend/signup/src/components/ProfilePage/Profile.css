@@ -1,6 +1,6 @@
 /* General Layout */
 .profile-container {
-  background: radial-gradient(circle at top right, #a2a9b4, #1048c9);
+  background: linear-gradient(to right top, #a8551794, #ec1567, #f8dd2a, #ebac00, #a8ab12);
   color: #f8fafc;
   min-height: 100vh;
   font-family: 'Inter', system-ui, sans-serif;
