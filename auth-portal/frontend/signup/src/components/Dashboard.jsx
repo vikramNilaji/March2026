@@ -51,14 +51,15 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <nav className="dashboard-nav">
-        <h2>Personal Portal</h2>
-        <button style={{width:"100px"}} className="logout-btn" onClick={
+    <button style={{width:"100px"}} className="logout-btn" onClick={
             handleLogout
           }>
             Logout
           </button>
-      </nav>
+      
+      <nav className="dashboard-nav">
+        <h2>Personal Portal</h2>
+        </nav>
 
       <header className="dashboard-header">
         <h1>Welcome back, {user?.name || "Developer"}! 👋</h1>
