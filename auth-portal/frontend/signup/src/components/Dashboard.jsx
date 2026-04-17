@@ -53,7 +53,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <nav className="dashboard-nav">
         <h2>Personal Portal</h2>
-        <button className="logout-btn" onClick={
+        <button style={{width:"100px"}} className="logout-btn" onClick={
             handleLogout
           }>
             Logout

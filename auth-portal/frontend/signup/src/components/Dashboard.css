@@ -25,10 +25,15 @@
 }
 
 .logout-btn {
+  display: inline-flex; /* Add this */
+  align-items: center;  /* Centers text vertically */
+  justify-content: center; /* Centers text horizontally */
+  
   background: #fff;
   color: #ef4444;
   border: 1px solid #fecaca;
-  padding: 0.5rem 1rem;
+  height: 50px; /* Increased slightly for better look */
+  width: 120px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
@@ -36,7 +41,7 @@
 }
 
 .logout-btn:hover {
-  background: #fef2f2;
+  background: #fee2e2;
   border-color: #ef4444;
 }
 
