@@ -25,7 +25,7 @@ function App() {
     fontSize: "0.95rem",
     border: "1px solid rgba(230, 49, 49, 0.84)",
     background: "rgb(92, 117, 202)",
-    };
+  };
 
   return (
     <Router>
@@ -37,8 +37,8 @@ function App() {
           padding: "15px 40px",
           background: "linear-gradient(to right, #60a5fa, #93c5fd)", // Light Blue Gradient
           boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-          border:"2px solid red",
-          borderRadius:"0.5rem"
+          border: "2px red",
+          borderRadius: "0.5rem",
         }}
       >
         <div style={{ display: "flex", gap: "10px" }}>
@@ -63,8 +63,8 @@ function App() {
       {/* Main Container to give space below nav */}
       <main
         style={{
-          border:"2px solid red",
-          borderRadius:"0.5rem",
+          border: "2px red",
+          borderRadius: "0.5rem",
           padding: "40px 20px",
           maxWidth: "1200px",
           margin: "0 auto",
