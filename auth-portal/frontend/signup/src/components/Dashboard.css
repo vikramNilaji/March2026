@@ -4,6 +4,8 @@
   background-color: #f8fafc; /* Very light cool grey */
   font-family: "Inter", system-ui, sans-serif;
   color: #1e293b;
+  border:2px rgb(235, 110, 8);
+  border-radius: 8px;
 }
 
 /* Dashboard Navigation */
