@@ -74,9 +74,12 @@
   width: 6px;
 }
 
-.expense-list-container::-webki;
+.expense-list-container::-webkit-scrollbar-thumb {
+  background: #c8d4e4;
+  border-radius: 999px;
+}
 
- .list-header {
+.list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;

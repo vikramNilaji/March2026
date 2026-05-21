@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ArrowRight, ShieldCheck, UserRoundCheck } from "lucide-react";
 import "./Login.css";
+
+const guestUser = {
+  name: "Guest Recruiter",
+  email: "guest@vaulthub.dev",
+  role: "Guest Access",
+};
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -11,22 +18,15 @@ const Login = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      const response = await fetch(
-        "https://vaulthub-xm1r.onrender.com/signin",
-        {
-          // Verify this path!
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        },
-      );
+      const response = await fetch("https://vaulthub-xm1r.onrender.com/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-      // 1. Check if the server actually returned JSON
       const contentType = response.headers.get("content-type");
       if (!contentType || !contentType.includes("application/json")) {
-        throw new Error(
-          "Server sent back HTML instead of JSON. Check your URL path!",
-        );
+        throw new Error("The server response was not valid JSON.");
       }
 
       const data = await response.json();
@@ -34,54 +34,90 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
-        alert("Logged in successfully!");
         navigate("/dashboard");
       } else {
         alert(data.message || "Login failed");
-        setIsLoading(false);
       }
     } catch (err) {
       console.error("Login Error:", err.message);
       alert("Login Error: " + err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return (
-    <div className="login-container">
-      <h2>Sign In</h2>
+  const handleGuestLogin = () => {
+    localStorage.setItem("token", "guest-access-token");
+    localStorage.setItem("user", JSON.stringify(guestUser));
+    navigate("/dashboard");
+  };
 
-      <form onSubmit={handleLogin} className="login-form">
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) =>
-            setFormData({ ...formData, password: e.target.value })
-          }
-          required
-        />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? <div className="spinner"></div> : "Log in"}
-        </button>
-      </form>
-      <div>
-        <h3 style={{ color: "black" }}>Don't Have Account?</h3>
-        <button
-          onClick={() => navigate("/signup")}
-          style={{ backgroundColor: "blue", color: "white" }}
-        >
-          Signup
-        </button>
+  return (
+    <section className="auth-page">
+      <div className="auth-intro">
+        <span className="eyebrow">
+          <ShieldCheck size={18} />
+          Secure MERN Workspace
+        </span>
+        <h1>Professional VaultHub access for work, demos, and reviews.</h1>
+        <p>
+          Sign in to continue, or enter instantly as a guest to explore the
+          dashboard without credentials.
+        </p>
       </div>
-      <h2>Guest Login Credentials</h2>
-      <h3 style={{ color: "black" }}>Email : guest@gmail.com </h3>
-      <h3 style={{ color: "black" }}>Password: 123456</h3>
-    </div>
+
+      <div className="login-container">
+        <div className="form-heading">
+          <h2>Sign In</h2>
+          <p>Access your personal VaultHub dashboard.</p>
+        </div>
+
+        <form onSubmit={handleLogin} className="login-form">
+          <label>
+            Email
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              required
+            />
+          </label>
+          <label>
+            Password
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={(e) =>
+                setFormData({ ...formData, password: e.target.value })
+              }
+              required
+            />
+          </label>
+          <button type="submit" className="primary-auth-btn" disabled={isLoading}>
+            {isLoading ? <span className="spinner" /> : "Log in"}
+            {!isLoading && <ArrowRight size={18} />}
+          </button>
+        </form>
+
+        <div className="auth-divider">
+          <span>or</span>
+        </div>
+
+        <button className="guest-login-btn" onClick={handleGuestLogin}>
+          <UserRoundCheck size={19} />
+          Guest Login
+        </button>
+
+        <div className="signup-prompt">
+          <span>New to VaultHub?</span>
+          <button onClick={() => navigate("/signup")}>Create account</button>
+        </div>
+      </div>
+    </section>
   );
 };
 

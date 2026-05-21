@@ -68,11 +68,11 @@
 
 // export default ExpenseList;
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import "./ExpenseList.css";
 
-const ExpenseList = ({ refreshTrigger}) => {
+const ExpenseList = ({ refreshTrigger }) => {
   const [expenses, setExpenses] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -81,7 +81,7 @@ const ExpenseList = ({ refreshTrigger}) => {
   const [editingId, setEditingId] = useState(null);
   const [editForm, setEditForm] = useState({ title: "", amount: "" });
 
-  const fetchExpensesAndTotal = async () => {
+  const fetchExpensesAndTotal = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -105,11 +105,11 @@ const ExpenseList = ({ refreshTrigger}) => {
       console.error("Error:", err.message);
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchExpensesAndTotal();
-  }, [refreshTrigger]);
+    void Promise.resolve().then(fetchExpensesAndTotal);
+  }, [fetchExpensesAndTotal, refreshTrigger]);
 
   // --- DELETE LOGIC ---
   const handleDelete = async (id) => {
