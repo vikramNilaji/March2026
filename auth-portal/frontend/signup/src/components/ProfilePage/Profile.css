@@ -13,10 +13,10 @@
   padding: clamp(30px, 6vw, 64px);
   color: #ffffff;
   background:
-    linear-gradient(135deg, rgba(13, 34, 61, 0.97), rgba(30, 95, 170, 0.88)),
-    #123c6e;
+    linear-gradient(135deg, rgba(94, 80, 63, 0.98), rgba(198, 172, 143, 0.86)),
+    #5e503f;
   border-radius: 8px;
-  box-shadow: 0 24px 58px rgba(18, 60, 110, 0.25);
+  box-shadow: 0 24px 58px rgba(94, 80, 63, 0.26);
 }
 
 .profile-eyebrow,
@@ -31,7 +31,7 @@
 }
 
 .profile-eyebrow {
-  color: #cfe4fb;
+  color: #ffffff;
   font-size: 0.82rem;
 }
 
@@ -46,7 +46,7 @@
 .profile-copy p {
   max-width: 670px;
   margin: 24px 0 0;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.1rem;
   line-height: 1.75;
 }
@@ -79,7 +79,7 @@
 }
 
 .profile-btn.primary {
-  color: #123c6e;
+  color: var(--ink);
   background: #ffffff;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
 }
@@ -127,7 +127,7 @@
   align-items: center;
   justify-content: center;
   gap: 7px;
-  color: #d7eafb;
+  color: #ffffff;
   font-weight: 800;
 }
 
@@ -142,7 +142,7 @@
   width: 42px;
   height: 42px;
   place-items: center;
-  color: #123c6e;
+  color: var(--ink);
   background: #ffffff;
   border-radius: 8px;
   font-weight: 900;
@@ -153,7 +153,7 @@
 
 .contact-strip a:hover {
   transform: translateY(-2px);
-  background: #e7f0fb;
+  background: var(--brand-soft);
 }
 
 .metrics-grid {
@@ -168,7 +168,7 @@
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: 0 14px 34px rgba(16, 24, 40, 0.07);
+  box-shadow: 0 14px 34px rgba(94, 80, 63, 0.1);
 }
 
 .metric-card {
@@ -233,7 +233,7 @@
   align-items: center;
   padding: 0 16px;
   color: var(--ink);
-  background: #f8fafc;
+  background: #fbf7f2;
   border: 1px solid var(--line);
   border-radius: 8px;
   font-weight: 800;
@@ -283,8 +283,8 @@
 .recruiter-panel {
   color: #ffffff;
   background:
-    linear-gradient(135deg, rgba(15, 118, 110, 0.96), rgba(18, 60, 110, 0.94)),
-    #0f766e;
+    linear-gradient(135deg, rgba(94, 80, 63, 0.98), rgba(198, 172, 143, 0.9)),
+    #5e503f;
 }
 
 .recruiter-panel .section-kicker,
@@ -295,7 +295,7 @@
 
 .recruiter-panel p {
   margin-top: 14px;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .recruiter-panel .profile-btn {

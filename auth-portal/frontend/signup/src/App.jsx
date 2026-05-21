@@ -14,6 +14,7 @@ import ExpenseTracker from "./components/ExpenseTracker";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import Calculator from "./components/Calculator/Calculator";
+import "./App.css";
 
 function App() {
   return (
