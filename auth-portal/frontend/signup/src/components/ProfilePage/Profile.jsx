@@ -2,50 +2,135 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  Award,
   BriefcaseBusiness,
+  CalendarDays,
   Code2,
   Download,
+  ExternalLink,
+  GraduationCap,
+  GitBranch,
+  Link2,
   Mail,
   MapPin,
+  Phone,
   Rocket,
   ShieldCheck,
-  Trophy,
 } from "lucide-react";
 import "./Profile.css";
 
-const strengths = [
-  "MERN architecture",
-  "JWT authentication",
-  "REST API design",
-  "Responsive React UI",
-  "Deployment workflows",
-  "Product thinking",
+const contacts = [
+  {
+    label: "vik.nilaji@gmail.com",
+    href: "mailto:vik.nilaji@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "+91-8550099765",
+    href: "tel:+918550099765",
+    icon: Phone,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/vikram-nilaji-417286261",
+    icon: Link2,
+  },
+  {
+    label: "Portfolio",
+    href: "https://vikramsvaulthub-theta.vercel.app/",
+    icon: ExternalLink,
+  },
+];
+
+const skills = [
+  {
+    category: "Frontend",
+    items: [
+      "React.js",
+      "React-Router-Dom",
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)",
+    ],
+  },
+  {
+    category: "Backend",
+    items: ["Node.js", "Express.js", "RESTful API Design"],
+  },
+  {
+    category: "Database",
+    items: ["MongoDB", "MongoDB Atlas (Cloud Management)"],
+  },
+  {
+    category: "Tools & Deployment",
+    items: ["GitHub", "Postman", "Render", "Vercel", "Railway", "Hostinger"],
+  },
+  {
+    category: "Security",
+    items: ["JWT (JSON Web Tokens)", "bcrypt encryption"],
+  },
 ];
 
 const metrics = [
-  { value: "3+", label: "years building web apps" },
-  { value: "6", label: "core MERN skills" },
-  { value: "2", label: "live portfolio modules" },
+  { value: "1+", label: "year of full-stack development experience" },
+  { value: "2", label: "major production and portfolio projects" },
+  { value: "6", label: "deployment and developer tools used" },
+];
+
+const experience = [
+  {
+    role: "Programmer / Developer",
+    organization: "KLE Technological University",
+    location: "Belagavi, KA",
+    period: "July 2024 - Present",
+  },
+  {
+    role: "Instructor / Technical Lead",
+    organization: "KLE Technological University",
+    location: "Belagavi, KA",
+    period: "August 2018 - June 2024",
+  },
 ];
 
 const projects = [
   {
-    title: "VaultHub Auth Portal",
+    title: "Voice of Venugram",
+    subtitle: "Local News Portal",
+    link: "https://www.voiceofvenugram.com",
+    displayLink: "www.voiceofvenugram.com",
     description:
-      "Full-stack authentication workspace with guest access, protected dashboard flow, and polished recruiter-facing profile.",
-    tags: ["React", "Node", "JWT"],
+      "Full-stack regional news portal with category-wise browsing, article detail pages, live stream support, contact forms, and commercial ad placements.",
+    highlights: [
+      "Built a secure admin dashboard for news and advertisement management.",
+      "Added image uploads, YouTube link validation, view tracking, and CRUD flows.",
+      "Implemented JWT and bcrypt authentication with MongoDB-backed models.",
+    ],
+    stack: [
+      "React.js",
+      "Vite",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "JWT",
+      "bcrypt",
+      "ImageKit",
+      "Hostinger",
+    ],
   },
   {
-    title: "Expense Tracker",
+    title: "Vault Hub",
+    subtitle: "Personal Project Portal",
+    link: "https://vikramsvaulthub-theta.vercel.app",
+    displayLink: "vikramsvaulthub-theta.vercel.app",
     description:
-      "Budget management module with add/list flows, category data, and clean dashboard entry points.",
-    tags: ["MERN", "REST API", "UX"],
-  },
-  {
-    title: "Smart Calculator",
-    description:
-      "Focused utility module designed for quick calculations inside the same personal productivity hub.",
-    tags: ["React", "Logic", "UI"],
+      "The all-in-one app which contains My Profile, and apps like Expense Tracker, Calculator, Games, and other productivity tools.",
+    highlights: [
+      "Developed a centralized dashboard for multiple micro-applications.",
+      "Integrated protected data access using JWT and bcrypt authentication.",
+      "Deployed the MERN application with MongoDB Atlas and Render.",
+    ],
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "Render"],
   },
 ];
 
@@ -56,48 +141,52 @@ const Profile = () => {
         <div className="profile-copy">
           <span className="profile-eyebrow">
             <ShieldCheck size={18} />
-            Recruiter-ready MERN developer profile
+            MERN full-stack web developer
           </span>
-          <h1>Vikram builds secure, polished web products with React and Node.</h1>
+          <h1>Vikram C. Nilaji builds secure, production-ready web apps.</h1>
           <p>
-            Full-stack developer focused on practical product experiences,
-            scalable APIs, clean interfaces, and reliable deployment-ready MERN
-            applications.
+            Results-driven full-stack web developer with over 1 year of
+            professional experience focused on scalable MERN applications,
+            RESTful APIs, high-performance React components, and secure
+            authentication protocols.
           </p>
 
           <div className="profile-actions">
             <a
-              href="/Vikram-Resume.html"
-              download="Vikram-Resume.html"
+              href="/Resume.pdf"
+              download="Vikram-C-Nilaji-Resume.pdf"
               className="profile-btn primary"
             >
               <Download size={18} />
               Download Resume
             </a>
             <Link to="/dashboard" className="profile-btn secondary">
-              Launch VaultHub
+              Open Vault Hub
               <ArrowRight size={18} />
             </Link>
           </div>
         </div>
 
         <aside className="profile-card">
-          <img src="/vikram.jpg" alt="Vikram" className="profile-pic" />
-          <h2>Vikram</h2>
-          <p>Full-Stack MERN Developer</p>
+          <img
+            src="/vikram.jpg"
+            alt="Vikram C. Nilaji"
+            className="profile-pic"
+          />
+          <h2>Vikram C. Nilaji</h2>
+          <p>Programmer / Developer</p>
           <div className="location">
             <MapPin size={17} />
-            Belagavi, India
+            BELGAUM, KNT
           </div>
-          <div className="contact-strip">
-            <a href="mailto:vikram@example.com" aria-label="Email Vikram">
-              <Mail size={18} />
-            </a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn profile">
-              <span>in</span>
-            </a>
-            <a href="https://github.com/" aria-label="GitHub profile">
-              <span>GH</span>
+          <div className="contact-strip" aria-label="Contact links">
+            {contacts.map(({ label, href, icon: Icon }) => (
+              <a key={label} href={href} aria-label={label}>
+                <Icon size={18} />
+              </a>
+            ))}
+            <a href="https://github.com/" aria-label="GitHub">
+              <GitBranch size={18} />
             </a>
           </div>
         </aside>
@@ -116,28 +205,53 @@ const Profile = () => {
         <div>
           <span className="section-kicker">
             <BriefcaseBusiness size={17} />
-            Professional Summary
+            Profile
           </span>
-          <h2>Built for impact, not just implementation.</h2>
+          <h2>Practical developer with live product experience.</h2>
         </div>
         <p>
-          Results-driven full-stack web developer with hands-on experience
-          creating MERN applications, protected user flows, REST endpoints, and
-          responsive frontends. I care about clean structure, business clarity,
-          and interfaces that feel trustworthy from the first click.
+          Skilled in architecting scalable web applications, translating complex
+          design mock-ups into responsive React components, deploying live
+          applications, and implementing secure authentication protocols with
+          JWT and bcrypt.
         </p>
       </section>
 
       <section className="profile-section">
         <span className="section-kicker">
           <Code2 size={17} />
-          Technical Strengths
+          Technical Skills
         </span>
         <div className="skills-grid">
-          {strengths.map((skill) => (
-            <div className="skill-card" key={skill}>
-              {skill}
-            </div>
+          {skills.map((group) => (
+            <article className="skill-card" key={group.category}>
+              <h3>{group.category}</h3>
+              <div className="tag-list">
+                {group.items.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="profile-section">
+        <span className="section-kicker">
+          <CalendarDays size={17} />
+          Work Experience
+        </span>
+        <div className="timeline">
+          {experience.map((item) => (
+            <article className="timeline-item" key={item.role}>
+              <div>
+                <h3>{item.role}</h3>
+                <p>
+                  {item.organization} | {item.location}
+                </p>
+              </div>
+              <span>{item.period}</span>
+            </article>
           ))}
         </div>
       </section>
@@ -145,15 +259,45 @@ const Profile = () => {
       <section id="projects" className="profile-section">
         <span className="section-kicker">
           <Rocket size={17} />
-          Portfolio Work
+          Major Projects
         </span>
         <div className="projects-container">
           {projects.map((project) => (
             <article className="project-card" key={project.title}>
-              <h3>{project.title}</h3>
+              <div className="project-card-header">
+                <div>
+                  <h3>
+                    <a href={project.link} target="_blank" rel="noreferrer">
+                      {project.title}
+                    </a>
+                  </h3>
+                  <span>{project.subtitle}</span>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-live-link"
+                  >
+                    {project.displayLink}
+                  </a>
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${project.title}`}
+                >
+                  <ExternalLink size={18} />
+                </a>
+              </div>
               <p>{project.description}</p>
+              <ul>
+                {project.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
               <div className="tag-list">
-                {project.tags.map((tag) => (
+                {project.stack.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
@@ -162,26 +306,23 @@ const Profile = () => {
         </div>
       </section>
 
-      <section className="profile-section recruiter-panel">
-        <div>
+      <section className="profile-section credential-panel">
+        <article>
           <span className="section-kicker">
-            <Trophy size={17} />
-            Recruiter Signal
+            <Award size={17} />
+            Certification
           </span>
-          <h2>Strong fit for junior and associate full-stack roles.</h2>
-          <p>
-            I can contribute across frontend implementation, backend API work,
-            authentication flows, dashboard experiences, and production polish.
-          </p>
-        </div>
-        <a
-          href="/Vikram-Resume.html"
-          download="Vikram-Resume.html"
-          className="profile-btn primary"
-        >
-          <Download size={18} />
-          Download Resume
-        </a>
+          <h2>MERN Full Stack Development</h2>
+          <p>Completed the Web Development Bootcamp Certification by Udemy.</p>
+        </article>
+        <article>
+          <span className="section-kicker">
+            <GraduationCap size={17} />
+            Education
+          </span>
+          <h2>Diploma in Electrical and Electronics Engineering</h2>
+          <p>Technical foundation paired with hands-on web development work.</p>
+        </article>
       </section>
     </div>
   );

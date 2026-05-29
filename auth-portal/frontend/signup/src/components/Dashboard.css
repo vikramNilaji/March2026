@@ -7,8 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 22px 26px;
+  gap: 14px;
+  padding: 16px 20px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -34,14 +34,20 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  min-height: 42px;
-  padding: 0 16px;
+  flex: 0 0 auto;
+  width: auto;
+  height: 28px;
+  max-height: 28px;
+  gap: 5px;
+  min-height: 28px;
+  padding: 0 9px;
   color: #ffffff;
   background: var(--brand-strong);
   border: 1px solid var(--brand-strong);
   border-radius: 8px;
+  font-size: 0.74rem;
   font-weight: 800;
+  line-height: 1;
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
@@ -242,12 +248,12 @@
   }
 
   .dashboard-nav {
-    align-items: stretch;
+    align-items: flex-start;
     flex-direction: column;
   }
 
   .logout-btn {
-    width: 100%;
+    align-self: flex-end;
   }
 
   .dashboard-grid {

@@ -100,7 +100,7 @@ const Dashboard = () => {
           <h2>VaultHub Dashboard</h2>
         </div>
         <button className="logout-btn" onClick={handleLogout}>
-          <LogOut size={18} />
+          <LogOut size={14} />
           Logout
         </button>
       </nav>
