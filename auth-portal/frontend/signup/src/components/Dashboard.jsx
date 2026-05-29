@@ -75,14 +75,14 @@ const Dashboard = () => {
       onClick: () => navigate("/calculator"),
       variant: "primary",
     },
-    {
-      icon: Settings,
-      title: "Profile Settings",
-      copy: "Review portfolio details and recruiter-ready profile material.",
-      action: "View Profile",
-      onClick: () => navigate("/profile"),
-      variant: "secondary",
-    },
+    // {
+    //   icon: Settings,
+    //   title: "Profile Settings",
+    //   copy: "Review portfolio details and recruiter-ready profile material.",
+    //   action: "View Profile",
+    //   onClick: () => navigate("/profile"),
+    //   variant: "secondary",
+    // },
     {
       icon: ClipboardList,
       title: "Task Manager",
