@@ -5,8 +5,7 @@ import {
   NavLink,
   Navigate,
 } from "react-router-dom";
-import { Gauge, UserRound } from "lucide-react";
-import Profile from "./components/ProfilePage/Profile";
+import { Gauge } from "lucide-react";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
@@ -34,10 +33,6 @@ function App() {
               <Gauge size={18} />
               Dashboard
             </NavLink>
-            <NavLink to="/profile" className="nav-pill">
-              <UserRound size={18} />
-              Vikram's Profile
-            </NavLink>
           </div>
         </nav>
 
@@ -51,7 +46,6 @@ function App() {
             <Route path="/add-expense" element={<ExpenseForm />} />
             <Route path="/expense-list" element={<ExpenseList />} />
             <Route path="/calculator" element={<Calculator />} />
-            <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </main>

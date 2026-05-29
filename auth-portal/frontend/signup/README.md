@@ -1,17 +1,14 @@
 # VaultHub
 
-VaultHub is a MERN portfolio workspace for Vikram C. Nilaji. It combines a recruiter-ready profile, resume download, live project links, secure authentication, an expense tracker, and productivity modules in one React application.
+VaultHub is a MERN workspace for Vikram C. Nilaji. It combines secure authentication, an expense tracker, a calculator, and productivity modules in one React application.
 
 ## Live Demo
 
 - Portfolio: https://vikramsvaulthub-theta.vercel.app/
-- Voice of Venugram: https://www.voiceofvenugram.com
 - Backend API: https://vaulthub-xm1r.onrender.com
 
 ## Features
 
-- Recruiter-focused profile with resume PDF download
-- Direct project links for Voice of Venugram and Vault Hub
 - Login, signup, and guest access flows
 - JWT-protected dashboard
 - Expense tracker with add, list, edit, delete, and total views
@@ -28,8 +25,6 @@ VaultHub is a MERN portfolio workspace for Vikram C. Nilaji. It combines a recru
 ## Screenshots
 
 ![VaultHub dashboard](./vault-dashboard-preview.png)
-
-![VaultHub profile](./vault-profile-preview.png)
 
 ## Local Setup
 
@@ -80,5 +75,5 @@ Backend routes are documented in [`../../docs/API.md`](../../docs/API.md).
 
 ## Notes
 
-- `public/Resume.pdf` is the resume file used by the profile download button.
-- Update `githubProfileUrl` in `src/components/ProfilePage/Profile.jsx` with the exact GitHub profile URL before sharing with recruiters.
+- The profile page/section has been removed from this project.
+- Keep the dashboard focused on workspace modules: expenses, calculator, and planned productivity features.

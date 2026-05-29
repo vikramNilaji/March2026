@@ -5,7 +5,6 @@ import {
   Calculator,
   ClipboardList,
   LogOut,
-  Settings,
   WalletCards,
 } from "lucide-react";
 import "./Dashboard.css";
@@ -14,7 +13,6 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const API_URL = "https://vaulthub-xm1r.onrender.com/api/expenses/add";
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -31,11 +29,11 @@ const Dashboard = () => {
         if (savedUser) {
           setUser(savedUser);
         } else {
-          const res = await fetch(`${API_URL}/profile`, {
-            headers: { Authorization: `Bearer ${token}` },
+          setUser({
+            name: "Developer",
+            email: "workspace user",
+            role: "Authenticated",
           });
-          const data = await res.json();
-          setUser(data);
         }
       } catch (error) {
         console.error("Dashboard error:", error);
@@ -43,7 +41,7 @@ const Dashboard = () => {
         localStorage.removeItem("user");
         navigate("/login");
       } finally {
-        setLoading(false );
+        setLoading(false);
       }
     };
 
@@ -75,14 +73,6 @@ const Dashboard = () => {
       onClick: () => navigate("/calculator"),
       variant: "primary",
     },
-    // {
-    //   icon: Settings,
-    //   title: "Profile Settings",
-    //   copy: "Review portfolio details and recruiter-ready profile material.",
-    //   action: "View Profile",
-    //   onClick: () => navigate("/profile"),
-    //   variant: "secondary",
-    // },
     {
       icon: ClipboardList,
       title: "Task Manager",
@@ -115,7 +105,7 @@ const Dashboard = () => {
         </div>
         <div className="summary-panel">
           <span>VaultHub</span>
-          <strong>4</strong>
+          <strong>3</strong>
           <small>professional modules</small>
         </div>
       </header>

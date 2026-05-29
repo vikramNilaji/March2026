@@ -87,7 +87,7 @@ const Signup = () => {
         <h1>Create access for your VaultHub workspace.</h1>
         <p>
           Register with a clean account flow, then use the dashboard to manage
-          profile, expenses, and project modules.
+          expenses, calculator, and project modules.
         </p>
       </div>
 
