@@ -1,31 +1,42 @@
-import React from "react";
-import { useState } from "react";
-import ExpenseForm from "./ExpenseForm";
+import React, { useState } from "react";
+import { Clock, WalletCards } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ExpenseForm from "./ExpenseForm";
 import ExpenseList from "./ExpenseList";
-import "./ExpenseTracker.css"
+import "./ExpenseTracker.css";
 
 const ExpenseTracker = () => {
-  const [refreshKey,setRefreshKey]=useState(0)
+  const [refreshKey, setRefreshKey] = useState(0);
   const navigate = useNavigate();
+
   const handleRefresh = () => {
-    setRefreshKey(prev => prev + 1); // Changing this key forces the list to re-fetch
+    setRefreshKey((prev) => prev + 1);
   };
+
   return (
-    <div className="expense-tracker-page" style={{ padding: "20px" }}>
-      <h2>💰 My Expense Tracker</h2>
-      
-      <div style={{ display: "flex", gap: "30px", flexWrap: "wrap" }}>
+    <section className="et-container">
+      <header className="et-header">
+        <span className="section-kicker">
+          <WalletCards size={18} />
+          Expense Tracker
+        </span>
+        <h1>Track spending without leaving VaultHub.</h1>
+        <p>
+          Add daily expenses, review recent history, and keep the dashboard
+          clean enough for repeated use.
+        </p>
+      </header>
+
+      <div className="et-main-layout">
         <ExpenseForm onExpenseAdded={handleRefresh} />
-        <div className="list-section">
-         </div>
-      <ExpenseList key={refreshKey}/> 
-      <button style={{height:"40px"}} onClick={() => navigate("/expense-list")}>History</button>
-    </div>
-          {/* This is where your Total and List will go */}
-          
-        </div>
-     
+        <ExpenseList key={refreshKey} />
+      </div>
+
+      <button className="history-btn et-history-btn" onClick={() => navigate("/expense-list")}>
+        <Clock size={17} />
+        View Full History
+      </button>
+    </section>
   );
 };
 

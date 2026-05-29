@@ -1,222 +1,162 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import "./ExpenseList.css"
-
-// const ExpenseList = () => {
-//     const [expenses, setExpenses] = useState([]);
-//     const [loading, setLoading] = useState(true);
-
-//     useEffect(() => {
-//         const fetchExpenses = async () => {
-//             try {
-//                 // 1. Get the token from localStorage
-//                 const token = localStorage.getItem('token');
-
-//                 // 2. Setup Axios Config with the Token (Bearer)
-//                 const config = {
-//                     headers: {
-//                         'Authorization': `Bearer ${token}`
-//                     }
-//                 };
-
-//                 // 3. Hit the backend route you wrote
-//                 const res = await axios.get('http://localhost:5000/api/expenses/user', config);
-
-//                 // 4. Update state with the database results
-//                 setExpenses(res.data);
-//                 setLoading(false);
-//             } catch (err) {
-//                 console.error("Error fetching expenses:", err.response?.data?.message || err.message);
-//                 setLoading(false);
-//             }
-//         };
-
-//         fetchExpenses();
-//     }, []);
-
-//     if (loading) return <p>Fetching your transactions...</p>;
-
-//     return (
-//         <div className="expense-list-container">
-//             <h3>Recent History</h3>
-//             {expenses.length === 0 ? (
-//                 <p>No expenses found. Start adding some!</p>
-//             ) : (
-//                 <ul style={{ listStyle: 'none', padding: 0 }}>
-//                     {expenses.map((item) => (
-//                         <li key={item._id} className="expense-card">
-//                             <div className="info">
-//                                 <strong>{item.title}</strong>
-//                                 <small>{item.category} • {new Date(item.date).toLocaleDateString()}</small>
-//                             </div>
-//                             <div className="amount" style={{ color: 'red', fontWeight: 'bold' }}>
-//                                 ₹{item.amount}
-//                             </div>
-//                             <div className="amount" style={{ color: 'red', fontWeight: 'bold' }}>
-//                               Delete
-//                             </div>
-//                              <div className="amount" style={{ color: 'red', fontWeight: 'bold' }}>
-//                              Edit
-//                             </div>
-//                         </li>
-//                     ))}
-//                 </ul>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default ExpenseList;
-
 import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import { Check, Pencil, Trash2, X } from "lucide-react";
 import "./ExpenseList.css";
+
+const API_BASE_URL = "https://vaulthub-xm1r.onrender.com/api/expenses";
 
 const ExpenseList = ({ refreshTrigger }) => {
   const [expenses, setExpenses] = useState([]);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-
-  // State for Editing
+  const [message, setMessage] = useState({ type: "", text: "" });
   const [editingId, setEditingId] = useState(null);
   const [editForm, setEditForm] = useState({ title: "", amount: "" });
 
   const fetchExpensesAndTotal = useCallback(async () => {
     try {
+      setLoading(true);
       const token = localStorage.getItem("token");
       const config = { headers: { Authorization: `Bearer ${token}` } };
 
-      // Fetch History
-      const resList = await axios.get(
-        "https://vaulthub-xm1r.onrender.com/api/expenses/user",
-        config,
-      );
+      const [resList, resTotal] = await Promise.all([
+        axios.get(`${API_BASE_URL}/user`, config),
+        axios.get(`${API_BASE_URL}/total`, config),
+      ]);
+
       setExpenses(resList.data);
-
-      // Fetch Total using your aggregate backend program
-      const resTotal = await axios.get(
-        "https://vaulthub-xm1r.onrender.com/api/expenses/total",
-        config,
-      );
-      setTotal(resTotal.data.totalAmount);
-
-      setLoading(false);
+      setTotal(resTotal.data.totalAmount || 0);
+      setMessage({ type: "", text: "" });
     } catch (err) {
-      console.error("Error:", err.message);
+      setMessage({
+        type: "error",
+        text: err.response?.data?.message || "Could not load expenses.",
+      });
+    } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    void Promise.resolve().then(fetchExpensesAndTotal);
+    void fetchExpensesAndTotal();
   }, [fetchExpensesAndTotal, refreshTrigger]);
 
-  // --- DELETE LOGIC ---
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this expense?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`https://vaulthub-xm1r.onrender.com/api/expenses/delete/${id}`, {
+      await axios.delete(`${API_BASE_URL}/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      fetchExpensesAndTotal(); // Refresh everything
+      setMessage({ type: "success", text: "Expense deleted." });
+      await fetchExpensesAndTotal();
     } catch (err) {
-      alert("Delete failed",err);
+      setMessage({
+        type: "error",
+        text: err.response?.data?.message || "Delete failed.",
+      });
     }
   };
 
-  // --- UPDATE LOGIC ---
   const handleEditClick = (item) => {
     setEditingId(item._id);
     setEditForm({ title: item.title, amount: item.amount });
+    setMessage({ type: "", text: "" });
   };
 
   const handleUpdate = async (id) => {
+    if (!editForm.title.trim() || Number(editForm.amount) <= 0) {
+      setMessage({ type: "error", text: "Enter a valid title and amount." });
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://vaulthub-xm1r.onrender.com/api/expenses/update/${id}`,
-        editForm,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
+        `${API_BASE_URL}/update/${id}`,
+        { ...editForm, title: editForm.title.trim() },
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       setEditingId(null);
-      fetchExpensesAndTotal();
+      setMessage({ type: "success", text: "Expense updated." });
+      await fetchExpensesAndTotal();
     } catch (err) {
-      alert("Update failed", err);
+      setMessage({
+        type: "error",
+        text: err.response?.data?.message || "Update failed.",
+      });
     }
   };
-
-  if (loading) return <p>Fetching transactions...</p>;
 
   return (
     <div className="expense-list-container">
       <div className="list-header">
         <h3>Recent History</h3>
-        <div className="total-display">
-          Total: ₹{total.toLocaleString("en-IN")}
-        </div>
+        <div className="total-display">Total: Rs. {total.toLocaleString("en-IN")}</div>
       </div>
 
-      {expenses.length === 0 ? (
-        <p>No expenses found.</p>
+      {message.text && (
+        <div className={`form-message ${message.type}`}>{message.text}</div>
+      )}
+
+      {loading ? (
+        <p className="empty-state">Fetching transactions...</p>
+      ) : expenses.length === 0 ? (
+        <p className="empty-state">No expenses found. Add your first entry.</p>
       ) : (
         <ul className="expense-ul">
           {expenses.map((item) => (
             <li key={item._id} className="expense-card">
               {editingId === item._id ? (
-                /* EDIT MODE */
                 <div className="edit-mode-container">
                   <input
                     value={editForm.title}
                     onChange={(e) =>
                       setEditForm({ ...editForm, title: e.target.value })
                     }
+                    aria-label="Expense title"
                   />
                   <input
                     type="number"
+                    min="1"
                     value={editForm.amount}
                     onChange={(e) =>
                       setEditForm({ ...editForm, amount: e.target.value })
                     }
+                    aria-label="Expense amount"
                   />
-                  <button
-                    className="save-btn"
-                    onClick={() => handleUpdate(item._id)}
-                  >
+                  <button className="save-btn" onClick={() => handleUpdate(item._id)}>
+                    <Check size={16} />
                     Save
                   </button>
-                  <button
-                    className="cancel-btn"
-                    onClick={() => setEditingId(null)}
-                  >
+                  <button className="cancel-btn" onClick={() => setEditingId(null)}>
+                    <X size={16} />
                     Cancel
                   </button>
                 </div>
               ) : (
-                /* DISPLAY MODE */
                 <>
                   <div className="info">
                     <strong>{item.title}</strong>
                     <small>
-                      {item.category} •{" "}
-                      {new Date(item.date).toLocaleDateString()}
+                      {item.category} | {new Date(item.date).toLocaleDateString()}
                     </small>
                   </div>
                   <div className="amt-actions">
-                    <div className="amount-val">₹{item.amount}</div>
+                    <div className="amount-val">Rs. {Number(item.amount).toLocaleString("en-IN")}</div>
                     <button
-                      className="edit-icon"
+                      className="icon-btn edit-icon"
                       onClick={() => handleEditClick(item)}
+                      aria-label={`Edit ${item.title}`}
                     >
-                      ✏️
+                      <Pencil size={16} />
                     </button>
                     <button
-                      className="delete-icon"
+                      className="icon-btn delete-icon"
                       onClick={() => handleDelete(item._id)}
+                      aria-label={`Delete ${item.title}`}
                     >
-                      🗑️
+                      <Trash2 size={16} />
                     </button>
                   </div>
                 </>

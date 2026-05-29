@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import "./Profile.css";
 
+const githubProfileUrl = "https://github.com/";
+
 const contacts = [
   {
     label: "vik.nilaji@gmail.com",
@@ -39,6 +41,11 @@ const contacts = [
     label: "Portfolio",
     href: "https://vikramsvaulthub-theta.vercel.app/",
     icon: ExternalLink,
+  },
+  {
+    label: "GitHub",
+    href: githubProfileUrl,
+    icon: GitBranch,
   },
 ];
 
@@ -98,6 +105,7 @@ const projects = [
     subtitle: "Local News Portal",
     link: "https://www.voiceofvenugram.com",
     displayLink: "www.voiceofvenugram.com",
+    preview: "news",
     description:
       "Full-stack regional news portal with category-wise browsing, article detail pages, live stream support, contact forms, and commercial ad placements.",
     highlights: [
@@ -123,6 +131,7 @@ const projects = [
     subtitle: "Personal Project Portal",
     link: "https://vikramsvaulthub-theta.vercel.app",
     displayLink: "vikramsvaulthub-theta.vercel.app",
+    preview: "/vault-dashboard-preview.png",
     description:
       "The all-in-one app which contains My Profile, and apps like Expense Tracker, Calculator, Games, and other productivity tools.",
     highlights: [
@@ -180,14 +189,15 @@ const Profile = () => {
             BELGAUM, KNT
           </div>
           <div className="contact-strip" aria-label="Contact links">
-            {contacts.map(({ label, href, icon: Icon }) => (
-              <a key={label} href={href} aria-label={label}>
-                <Icon size={18} />
-              </a>
-            ))}
-            <a href="https://github.com/" aria-label="GitHub">
-              <GitBranch size={18} />
-            </a>
+            {contacts.map((contact) => {
+              const ContactIcon = contact.icon;
+
+              return (
+                <a key={contact.label} href={contact.href} aria-label={contact.label}>
+                  <ContactIcon size={18} />
+                </a>
+              );
+            })}
           </div>
         </aside>
       </header>
@@ -264,6 +274,23 @@ const Profile = () => {
         <div className="projects-container">
           {projects.map((project) => (
             <article className="project-card" key={project.title}>
+              {project.preview === "news" ? (
+                <div className="project-preview news-preview" aria-hidden="true">
+                  <div className="preview-topline" />
+                  <div className="preview-headline" />
+                  <div className="preview-grid">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={project.preview}
+                  alt={`${project.title} preview`}
+                  className="project-preview"
+                />
+              )}
               <div className="project-card-header">
                 <div>
                   <h3>

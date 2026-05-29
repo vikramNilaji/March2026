@@ -1,16 +1,84 @@
-# React + Vite
+# VaultHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+VaultHub is a MERN portfolio workspace for Vikram C. Nilaji. It combines a recruiter-ready profile, resume download, live project links, secure authentication, an expense tracker, and productivity modules in one React application.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Portfolio: https://vikramsvaulthub-theta.vercel.app/
+- Voice of Venugram: https://www.voiceofvenugram.com
+- Backend API: https://vaulthub-xm1r.onrender.com
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Recruiter-focused profile with resume PDF download
+- Direct project links for Voice of Venugram and Vault Hub
+- Login, signup, and guest access flows
+- JWT-protected dashboard
+- Expense tracker with add, list, edit, delete, and total views
+- Calculator module
+- Responsive layouts for desktop, tablet, and mobile
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Frontend: React, Vite, React Router, CSS, lucide-react
+- Backend: Node.js, Express.js, MongoDB, Mongoose
+- Authentication: JWT, bcrypt
+- Tools and deployment: GitHub, Render, Vercel, Postman
+
+## Screenshots
+
+![VaultHub dashboard](./vault-dashboard-preview.png)
+
+![VaultHub profile](./vault-profile-preview.png)
+
+## Local Setup
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Run lint checks:
+
+```bash
+npm run lint
+```
+
+## Backend Setup
+
+From `auth-portal/backend`:
+
+```bash
+npm install
+npm run dev
+```
+
+Required backend environment variables:
+
+```bash
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
+
+## API Documentation
+
+Backend routes are documented in [`../../docs/API.md`](../../docs/API.md).
+
+## Notes
+
+- `public/Resume.pdf` is the resume file used by the profile download button.
+- Update `githubProfileUrl` in `src/components/ProfilePage/Profile.jsx` with the exact GitHub profile URL before sharing with recruiters.

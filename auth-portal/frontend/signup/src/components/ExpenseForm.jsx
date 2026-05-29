@@ -1,29 +1,39 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ExpenseForm.css";
-import ExpenseList from "./ExpenseList";
 
 const ExpenseForm = ({onExpenseAdded}) => {
+  const [message, setMessage] = useState({ type: "", text: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     amount: "",
-    category: "Food", // Default value
-    date: new Date().toISOString().split("T")[0], // Default to today
+    category: "Food",
+    date: new Date().toISOString().split("T")[0],
   });
 
   const { title, amount, category, date } = formData;
 
-  const onChange = (e) =>
+  const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setMessage({ type: "", text: "" });
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!title.trim()) {
+      setMessage({ type: "error", text: "Please enter an expense title." });
+      return;
+    }
+    if (!amount || Number(amount) <= 0) {
+      setMessage({ type: "error", text: "Amount must be greater than zero." });
+      return;
+    }
 
     try {
-      // 1. Get the token we saved during Sign-in
+      setIsSubmitting(true);
       const token = localStorage.getItem("token");
 
-      // 2. Set the headers (The "Security Badge")
       const config = {
         headers: {
           "Content-Type": "application/json",
@@ -31,17 +41,14 @@ const ExpenseForm = ({onExpenseAdded}) => {
         },
       };
 
-      // 3. Make the request
-      const res = await axios.post(
+      await axios.post(
         "https://vaulthub-xm1r.onrender.com/api/expenses/add",
-        formData,
+        { ...formData, title: title.trim() },
         config,
       );
 
-      alert("Expense Added Successfully!");
-      console.log(res.data);
+      setMessage({ type: "success", text: "Expense added successfully." });
 
-      // Clear form
       setFormData({
         title: "",
         amount: "",
@@ -51,15 +58,22 @@ const ExpenseForm = ({onExpenseAdded}) => {
       if (onExpenseAdded) {
         onExpenseAdded(); 
       }
-      // navigate("/expense-list")
     } catch (err) {
       console.error(err.response?.data?.message || "Error adding expense");
-      alert(err.response?.data?.message || "Server Error");
+      setMessage({
+        type: "error",
+        text: err.response?.data?.message || "Could not add expense.",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
     <div className="expense-form">
       <h3>Add New Expense</h3>
+      {message.text && (
+        <div className={`form-message ${message.type}`}>{message.text}</div>
+      )}
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -73,6 +87,8 @@ const ExpenseForm = ({onExpenseAdded}) => {
           type="number"
           name="amount"
           placeholder="Amount"
+          min="1"
+          step="1"
           value={amount}
           onChange={onChange}
           required
@@ -95,9 +111,9 @@ const ExpenseForm = ({onExpenseAdded}) => {
         <button
           type="submit"
           className="refresh-btn"
-          // onClick={() => window.location.reload()}
+          disabled={isSubmitting}
         >
-          Add Expense
+          {isSubmitting ? "Adding..." : "Add Expense"}
         </button>
          
       </form>

@@ -23,8 +23,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    linear-gradient(145deg, rgba(198, 172, 143, 0.2), rgba(94, 80, 63, 0.12)),
-    #f8f3ed;
+    linear-gradient(145deg, rgba(18, 112, 104, 0.1), rgba(127, 63, 29, 0.08)),
+    #f5f8f7;
 }
 
 a {
@@ -46,6 +46,6 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid rgba(198, 172, 143, 0.55);
+  outline: 3px solid rgba(18, 112, 104, 0.32);
   outline-offset: 3px;
 }

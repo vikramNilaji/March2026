@@ -308,8 +308,57 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  min-height: 430px;
+  min-height: 520px;
   padding: 24px;
+}
+
+.project-preview {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--panel-soft);
+}
+
+.news-preview {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(21, 43, 61, 0.95), rgba(127, 63, 29, 0.78)),
+    var(--brand-strong);
+}
+
+.preview-topline,
+.preview-headline,
+.preview-grid span {
+  display: block;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.preview-topline {
+  width: 42%;
+  height: 14px;
+}
+
+.preview-headline {
+  width: 78%;
+  height: 44px;
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: auto;
+}
+
+.preview-grid span {
+  height: 46px;
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .project-card-header {

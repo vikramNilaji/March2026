@@ -69,10 +69,10 @@
   padding: clamp(28px, 5vw, 48px);
   color: #ffffff;
   background:
-    linear-gradient(135deg, rgba(94, 80, 63, 0.98), rgba(198, 172, 143, 0.82)),
-    #5e503f;
+    linear-gradient(135deg, rgba(21, 43, 61, 0.96), rgba(18, 112, 104, 0.84)),
+    var(--brand-strong);
   border-radius: 8px;
-  box-shadow: 0 22px 55px rgba(94, 80, 63, 0.24);
+  box-shadow: 0 22px 55px rgba(21, 43, 61, 0.2);
   overflow: hidden;
 }
 
@@ -136,7 +136,7 @@
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: 0 12px 32px rgba(94, 80, 63, 0.1);
+  box-shadow: 0 12px 32px rgba(21, 43, 61, 0.08);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -145,8 +145,8 @@
 
 .app-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(94, 80, 63, 0.32);
-  box-shadow: 0 20px 44px rgba(94, 80, 63, 0.14);
+  border-color: rgba(18, 112, 104, 0.28);
+  box-shadow: 0 20px 44px rgba(21, 43, 61, 0.12);
 }
 
 .card-icon {
@@ -207,23 +207,23 @@
 }
 
 .secondary-btn:hover {
-  background: #e6d7c5;
+  background: #d7ede8;
 }
 
 .app-card.disabled {
-  background: #fbf7f2;
+  background: var(--panel-soft);
   opacity: 0.76;
 }
 
 .app-card.disabled:hover {
   transform: none;
-  box-shadow: 0 12px 32px rgba(94, 80, 63, 0.1);
+  box-shadow: 0 12px 32px rgba(21, 43, 61, 0.08);
 }
 
 .app-card.disabled button {
   cursor: not-allowed;
   color: #353535;
-  background: #e6d7c5;
+  background: #d7ede8;
 }
 
 .loader {

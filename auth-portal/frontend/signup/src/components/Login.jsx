@@ -12,10 +12,31 @@ const guestUser = {
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState({ type: "", text: "" });
   const navigate = useNavigate();
+
+  const updateField = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+    setMessage({ type: "", text: "" });
+  };
+
+  const validateForm = () => {
+    if (!/^\S+@\S+\.\S+$/.test(formData.email.trim())) {
+      return "Please enter a valid email address.";
+    }
+    if (!formData.password) return "Please enter your password.";
+    return "";
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const validationError = validateForm();
+
+    if (validationError) {
+      setMessage({ type: "error", text: validationError });
+      return;
+    }
+
     try {
       setIsLoading(true);
       const response = await fetch("https://vaulthub-xm1r.onrender.com/signin", {
@@ -36,11 +57,17 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");
       } else {
-        alert(data.message || "Login failed");
+        setMessage({
+          type: "error",
+          text: data.error || data.message || "Login failed",
+        });
       }
     } catch (err) {
       console.error("Login Error:", err.message);
-      alert("Login Error: " + err.message);
+      setMessage({
+        type: "error",
+        text: "Unable to sign in right now. Please check your connection.",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -72,17 +99,19 @@ const Login = () => {
           <p>Access your personal VaultHub dashboard.</p>
         </div>
 
-        <form onSubmit={handleLogin} className="login-form">
+        {message.text && (
+          <div className={`form-message ${message.type}`}>{message.text}</div>
+        )}
+
+        <form onSubmit={handleLogin} className="login-form" noValidate>
           <label>
             Email
             <input
               type="email"
               placeholder="you@example.com"
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              required
+              onChange={(e) => updateField("email", e.target.value)}
+              autoComplete="email"
             />
           </label>
           <label>
@@ -91,10 +120,8 @@ const Login = () => {
               type="password"
               placeholder="Enter your password"
               value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-              required
+              onChange={(e) => updateField("password", e.target.value)}
+              autoComplete="current-password"
             />
           </label>
           <button type="submit" className="primary-auth-btn" disabled={isLoading}>
