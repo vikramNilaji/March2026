@@ -43,7 +43,7 @@ const Dashboard = () => {
         localStorage.removeItem("user");
         navigate("/login");
       } finally {
-        setLoading(false);
+        setLoading(false );
       }
     };
 
